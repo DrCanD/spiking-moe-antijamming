@@ -1,6 +1,6 @@
 # Spiking Front End MoE for Physics Aware Anti-Jamming
 
-Code and results for **“Spiking-Front-End Mixture of Experts for Physics-Aware Anti-Jamming on a Baseband Digital Link.”**
+Code and results for **“Spiking-Front-End Mixture of Experts for Physics-Aware Anti-Jamming on a Baseband Digital Link”**.
 
 The receiver uses spike timing to route received baseband samples to mitigation methods matched to interference structure. It combines compound-interference recovery with selective computation and a measured FPGA front end.
 
