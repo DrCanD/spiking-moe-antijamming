@@ -1,0 +1,2 @@
+# Board-only runner; apt package python3-numpy is also sufficient.
+numpy>=1.21,<3

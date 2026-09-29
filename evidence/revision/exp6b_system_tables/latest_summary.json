@@ -1,0 +1,1735 @@
+{
+  "run_id": "20260911_1421",
+  "run_key": "dc7b4d3b",
+  "run_version": 1,
+  "analysis_version": 1,
+  "exp_index": 6,
+  "exp_total": 6,
+  "exp_name": "System-level tables with the final MoE: switching, goodput/duty, fading, SNR, coded link (Exp 6b)",
+  "exp_manifest": [
+    [
+      1,
+      "Front-end model settling -> locked: theta=2, no LIF, A=Welch-512+drift / B=RF bank",
+      "done"
+    ],
+    [
+      2,
+      "Expert x JSR diagnosis: LSTM 0-20 fixes the range; ALE wins above ~10 dB, harms below (R3-4)",
+      "done"
+    ],
+    [
+      3,
+      "MoE-level BER: ALE-128 type-matched mu beats LSTM everywhere; MoE == oracle (R3-3)",
+      "done"
+    ],
+    [
+      4,
+      "Compound jamming: cascade == oracle; NB+SW exposed the broadband confusion -> override (R3-5)",
+      "done"
+    ],
+    [
+      5,
+      "KV260 energy measurement of the final MoE (R3-2)",
+      "pending"
+    ],
+    [
+      6,
+      "6a done (final MoE == oracle); 6b: switching, goodput/duty, fading, SNR, coded link (THIS)",
+      "THIS"
+    ]
+  ],
+  "smoke": false,
+  "config": {
+    "exp_index": 6,
+    "exp_total": 6,
+    "exp_name": "System-level tables with the final MoE: switching, goodput/duty, fading, SNR, coded link (Exp 6b)",
+    "exp_manifest": [
+      [
+        1,
+        "Front-end model settling -> locked: theta=2, no LIF, A=Welch-512+drift / B=RF bank",
+        "done"
+      ],
+      [
+        2,
+        "Expert x JSR diagnosis: LSTM 0-20 fixes the range; ALE wins above ~10 dB, harms below (R3-4)",
+        "done"
+      ],
+      [
+        3,
+        "MoE-level BER: ALE-128 type-matched mu beats LSTM everywhere; MoE == oracle (R3-3)",
+        "done"
+      ],
+      [
+        4,
+        "Compound jamming: cascade == oracle; NB+SW exposed the broadband confusion -> override (R3-5)",
+        "done"
+      ],
+      [
+        5,
+        "KV260 energy measurement of the final MoE (R3-2)",
+        "pending"
+      ],
+      [
+        6,
+        "6a done (final MoE == oracle); 6b: switching, goodput/duty, fading, SNR, coded link (THIS)",
+        "THIS"
+      ]
+    ],
+    "smoke": false,
+    "conditions": [
+      "fixed",
+      "random"
+    ],
+    "rho_min": 0.25,
+    "switch_trials": 10,
+    "switch_seed_base": 30000,
+    "gp_jsr_list": [
+      6,
+      8,
+      10,
+      12,
+      14,
+      16
+    ],
+    "gp_trials": 20,
+    "gp_seed_base": 15000,
+    "duty_list": [
+      0.1,
+      0.15,
+      0.2,
+      0.3,
+      0.4
+    ],
+    "duty_trials": 20,
+    "duty_seed_base": 12000,
+    "fade_trials": 20,
+    "fade_block": 100,
+    "fade_cls_seed_base": 13000,
+    "fade_ber_seed_base": 14000,
+    "snr_list": [
+      4,
+      7,
+      10,
+      13,
+      16
+    ],
+    "snr_trials": 30,
+    "snr_seed_base": 16000,
+    "rs_codes": [
+      [
+        32,
+        "RS(255,223)"
+      ],
+      [
+        64,
+        "RS(255,191)"
+      ],
+      [
+        96,
+        "RS(255,159)"
+      ],
+      [
+        128,
+        "RS(255,127)"
+      ]
+    ],
+    "rs_jsr_list": [
+      6,
+      8,
+      10,
+      12,
+      14,
+      16
+    ],
+    "rs_trials": 50,
+    "rs_codewords": 20,
+    "rs_seed_base": 40000,
+    "blank_min_fraction": 0.01,
+    "blank_max_fraction": 0.6,
+    "pulse_k": 2.0,
+    "n_sym_test": 10000,
+    "snr_db": 10.0,
+    "seed_base": 11000,
+    "clean_seed_base": 30000,
+    "lstm_hidden": 24,
+    "lstm_seq_len": 200,
+    "lstm_lr": 0.002,
+    "lstm_epochs": 200,
+    "lstm_batch": 128,
+    "train_jsr_list": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18,
+      20
+    ],
+    "train_n_per_jsr": 8,
+    "mono_n_per_jsr": 4,
+    "train_seed_base": 40000,
+    "mono_seed_base": 50000,
+    "train_n_sym": 10000,
+    "paper_train_jsr": [
+      4,
+      8,
+      12,
+      16
+    ],
+    "paper_train_n_per_jsr": 10,
+    "paper_train_seed_base": 4000,
+    "ale_taps": 128,
+    "ale_delay": 20,
+    "ale_mu_nb": 0.02,
+    "ale_mu_sw": 0.05,
+    "ale_mu_only": 0.02,
+    "gate_thresholds": [
+      4.0,
+      6.0,
+      8.0,
+      10.0
+    ],
+    "gate_default": 6.0,
+    "amb_frac": 0.3,
+    "conf_threshold": 0.5,
+    "blanker_z": 3.0,
+    "blanker_group": 5,
+    "blanker_cal_seed_base": 600,
+    "blanker_cal_n": 30,
+    "blanker_cal_samples": 10000,
+    "router_train_jsr": [
+      0,
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18,
+      20
+    ],
+    "router_n_train_clean": 50,
+    "router_n_train_per": 5,
+    "router_seed_base": 60000,
+    "router_theta": 2.0,
+    "enc_refractory": 2,
+    "rf_bands": 16,
+    "rf_f_lo_hz": 25000.0,
+    "rf_f_hi_hz": 475000.0,
+    "rf_tau": 15.0,
+    "rf_th": 0.12,
+    "n_subframes": 20,
+    "rf_trees": 100,
+    "rf_depth": 10,
+    "rf_seed": 42,
+    "nb_f_range": [
+      0.05,
+      0.95
+    ],
+    "sweep_f_range": [
+      0.05,
+      0.95
+    ],
+    "sweep_dur_range": [
+      0.5,
+      2.0
+    ],
+    "pulse_duty_range": [
+      0.1,
+      0.4
+    ],
+    "pulse_period_range": [
+      300,
+      800
+    ],
+    "device": "cuda",
+    "n_jobs": -1,
+    "verbose": true,
+    "recommended_runtime": "GPU (T4 is enough); ~25-35 min (router features on 100k-sample frames dominate)"
+  },
+  "reference": {
+    "notebook": "/content/drive/MyDrive/Colab_Notebooks/SNN_MoE_COMPLETE.ipynb",
+    "sha256_16": "7601c584f5c4ad65",
+    "imports_skipped": []
+  },
+  "deviations": [
+    "final MoE frozen in Exp 6a: front-end B router + {ALE-128 mu_NB, ALE-128 mu_SW, calibrated blanker, pass-through} + override + cascade",
+    "switching: reference scenario (100 frames) and seeds 30000+trial*1000+frame; 'fixed blanker' re-implemented from the reference eval (within-frame z>3)",
+    "MoE-conv: the reference 7 conventional features (full FFT) as the router, SAME experts \u2014 routing-parity row",
+    "goodput/duty: reference protocol and seeds; duty variation uses the reference add_pulse_jam_variable (fixed protocol) and random duty/period/phase (random protocol)",
+    "fading: reference simulate_rayleigh (fixed jammers; block-faded signal, unfaded jammer); random protocol = same fading + randomised jammers; AWGN-trained router AND a fading-augmented router (AWGN + faded training frames) reported",
+    "SNR: routers and blanker calibration at 10 dB, tested at other SNRs; override uses rho only (no SNR knowledge)",
+    "coded link: reference protocol (255-byte codewords, 20 cw x 50 trials, seeds 40000+); erasures from the calibrated pulse expert; random protocol = random duty/period/phase"
+  ],
+  "data_fingerprint": "c1d31d20b7c2",
+  "results": {
+    "A|fixed": {
+      "overall": {
+        "none": 0.0942235,
+        "notch": 0.083837,
+        "blanker_fixed": 0.09404619153366411,
+        "ale_blind": 0.0869741,
+        "moe_conv": 0.052162099999999996,
+        "moe_final": 0.052162099999999996,
+        "oracle": 0.052162099999999996
+      },
+      "segments": {
+        "BB-1": {
+          "none": 0.17127950000000003,
+          "notch": 0.1722385,
+          "blanker_fixed": 0.1713979702166667,
+          "ale_blind": 0.178487,
+          "moe_conv": 0.17127950000000003,
+          "moe_final": 0.17127950000000003,
+          "oracle": 0.17127950000000003
+        },
+        "NB": {
+          "none": 0.06811666666666666,
+          "notch": 1.3333333333333334e-06,
+          "blanker_fixed": 0.06812234785895635,
+          "ale_blind": 0.00010133333333333333,
+          "moe_conv": 0.00010466666666666666,
+          "moe_final": 0.00010466666666666666,
+          "oracle": 0.00010466666666666666
+        },
+        "SW-1": {
+          "none": 0.05002,
+          "notch": 0.04815199999999999,
+          "blanker_fixed": 0.049210678659850834,
+          "ale_blind": 0.0030926666666666667,
+          "moe_conv": 0.0030926666666666667,
+          "moe_final": 0.0030926666666666667,
+          "oracle": 0.0030926666666666667
+        },
+        "PL-1": {
+          "none": 0.067087,
+          "notch": 0.067228,
+          "blanker_fixed": 0.06706981981731606,
+          "ale_blind": 0.108834,
+          "moe_conv": 0.0,
+          "moe_final": 0.0,
+          "oracle": 0.0
+        },
+        "BB-2": {
+          "none": 0.171281,
+          "notch": 0.172164,
+          "blanker_fixed": 0.17138660050577545,
+          "ale_blind": 0.178462,
+          "moe_conv": 0.171281,
+          "moe_final": 0.171281,
+          "oracle": 0.171281
+        },
+        "SW-2": {
+          "none": 0.05005799999999999,
+          "notch": 0.047965000000000015,
+          "blanker_fixed": 0.049199192839973455,
+          "ale_blind": 0.0029850000000000002,
+          "moe_conv": 0.0029850000000000002,
+          "moe_final": 0.0029850000000000002,
+          "oracle": 0.0029850000000000002
+        },
+        "PL-2": {
+          "none": 0.066958,
+          "notch": 0.06707799999999998,
+          "blanker_fixed": 0.06694100214471602,
+          "ale_blind": 0.10886100000000001,
+          "moe_conv": 0.0,
+          "moe_final": 0.0,
+          "oracle": 0.0
+        }
+      },
+      "routing_B": 1.0,
+      "routing_conv": 1.0,
+      "routing_B_segments": {
+        "BB-1": 1.0,
+        "NB": 1.0,
+        "SW-1": 1.0,
+        "PL-1": 1.0,
+        "BB-2": 1.0,
+        "SW-2": 1.0,
+        "PL-2": 1.0
+      }
+    },
+    "A|random": {
+      "overall": {
+        "none": 0.08633800000000001,
+        "notch": 0.08596569999999999,
+        "blanker_fixed": 0.08618855405297238,
+        "ale_blind": 0.0889881,
+        "moe_conv": 0.051482133189323494,
+        "moe_final": 0.051480033189323496,
+        "oracle": 0.051482133189323494
+      },
+      "segments": {
+        "BB-1": {
+          "none": 0.17127950000000003,
+          "notch": 0.1722385,
+          "blanker_fixed": 0.1713979702166667,
+          "ale_blind": 0.178487,
+          "moe_conv": 0.17127950000000003,
+          "moe_final": 0.17127950000000003,
+          "oracle": 0.17127950000000003
+        },
+        "NB": {
+          "none": 0.04510066666666667,
+          "notch": 0.04352266666666666,
+          "blanker_fixed": 0.04510492101199882,
+          "ale_blind": 0.0008,
+          "moe_conv": 0.0003246666666666667,
+          "moe_final": 0.0003246666666666667,
+          "oracle": 0.0003246666666666667
+        },
+        "SW-1": {
+          "none": 0.015285333333333331,
+          "notch": 0.012896666666666667,
+          "blanker_fixed": 0.015293916453918399,
+          "ale_blind": 0.00023933333333333334,
+          "moe_conv": 0.00023933333333333334,
+          "moe_final": 0.00022533333333333335,
+          "oracle": 0.00023933333333333334
+        },
+        "PL-1": {
+          "none": 0.081143,
+          "notch": 0.081225,
+          "blanker_fixed": 0.08060453867604203,
+          "ale_blind": 0.1185365,
+          "moe_conv": 3.5696454315284984e-06,
+          "moe_final": 3.5696454315284984e-06,
+          "oracle": 3.5696454315284984e-06
+        },
+        "BB-2": {
+          "none": 0.171281,
+          "notch": 0.172164,
+          "blanker_fixed": 0.17138660050577545,
+          "ale_blind": 0.178462,
+          "moe_conv": 0.171281,
+          "moe_final": 0.171281,
+          "oracle": 0.171281
+        },
+        "SW-2": {
+          "none": 0.018214,
+          "notch": 0.017248,
+          "blanker_fixed": 0.018235267387460646,
+          "ale_blind": 0.00012299999999999998,
+          "moe_conv": 0.00012299999999999998,
+          "moe_final": 0.00012299999999999998,
+          "oracle": 0.00012299999999999998
+        },
+        "PL-2": {
+          "none": 0.07846099999999999,
+          "notch": 0.078689,
+          "blanker_fixed": 0.0776603986521944,
+          "ale_blind": 0.11569000000000003,
+          "moe_conv": 5.192602371809155e-06,
+          "moe_final": 5.192602371809155e-06,
+          "oracle": 5.192602371809155e-06
+        }
+      },
+      "routing_B": 0.996,
+      "routing_conv": 1.0,
+      "routing_B_segments": {
+        "BB-1": 1.0,
+        "NB": 0.9733333333333334,
+        "SW-1": 1.0,
+        "PL-1": 1.0,
+        "BB-2": 1.0,
+        "SW-2": 1.0,
+        "PL-2": 1.0
+      }
+    },
+    "B|fixed": {
+      "goodput": {
+        "6": {
+          "gp_none": 0.9501099999999999,
+          "gp_erasure": 0.7989499999999999,
+          "survival": 0.7989499999999999,
+          "ber_erasure": 0.0
+        },
+        "8": {
+          "gp_none": 0.940475,
+          "gp_erasure": 0.7989499999999999,
+          "survival": 0.7989499999999999,
+          "ber_erasure": 0.0
+        },
+        "10": {
+          "gp_none": 0.932635,
+          "gp_erasure": 0.7989499999999999,
+          "survival": 0.7989499999999999,
+          "ber_erasure": 0.0
+        },
+        "12": {
+          "gp_none": 0.9262650000000001,
+          "gp_erasure": 0.7989499999999999,
+          "survival": 0.7989499999999999,
+          "ber_erasure": 0.0
+        },
+        "14": {
+          "gp_none": 0.9211050000000001,
+          "gp_erasure": 0.7989499999999999,
+          "survival": 0.7989499999999999,
+          "ber_erasure": 0.0
+        },
+        "16": {
+          "gp_none": 0.9167599999999998,
+          "gp_erasure": 0.7989499999999999,
+          "survival": 0.7989499999999999,
+          "ber_erasure": 0.0
+        }
+      },
+      "duty": {
+        "0.1": {
+          "ber_none": 0.038425,
+          "ber_erasure": 0.0,
+          "survival": 0.8985999999999998
+        },
+        "0.15": {
+          "ber_none": 0.05606999999999999,
+          "ber_erasure": 0.0,
+          "survival": 0.798775
+        },
+        "0.2": {
+          "ber_none": 0.06696999999999999,
+          "ber_erasure": 0.0,
+          "survival": 0.798775
+        },
+        "0.3": {
+          "ber_none": 0.09029000000000001,
+          "ber_erasure": 0.0,
+          "survival": 0.6989
+        },
+        "0.4": {
+          "ber_none": 0.10953500000000001,
+          "ber_erasure": 0.0,
+          "survival": 0.5990500000000002
+        }
+      }
+    },
+    "B|random": {
+      "goodput": {
+        "6": {
+          "gp_none": 0.943405,
+          "gp_erasure": 0.64795,
+          "survival": 0.647975,
+          "ber_erasure": 3.78905702490112e-05
+        },
+        "8": {
+          "gp_none": 0.929805,
+          "gp_erasure": 0.6462749999999999,
+          "survival": 0.6462749999999999,
+          "ber_erasure": 0.0
+        },
+        "10": {
+          "gp_none": 0.9174800000000001,
+          "gp_erasure": 0.64495,
+          "survival": 0.64495,
+          "ber_erasure": 0.0
+        },
+        "12": {
+          "gp_none": 0.9071000000000001,
+          "gp_erasure": 0.6442750000000002,
+          "survival": 0.6442750000000002,
+          "ber_erasure": 0.0
+        },
+        "14": {
+          "gp_none": 0.8982699999999999,
+          "gp_erasure": 0.6435500000000001,
+          "survival": 0.6435500000000001,
+          "ber_erasure": 0.0
+        },
+        "16": {
+          "gp_none": 0.8907850000000002,
+          "gp_erasure": 0.6431250000000002,
+          "survival": 0.6431250000000002,
+          "ber_erasure": 0.0
+        }
+      },
+      "duty": {
+        "0.1": {
+          "ber_none": 0.043555,
+          "ber_erasure": 0.0,
+          "survival": 0.793425
+        },
+        "0.15": {
+          "ber_none": 0.057825,
+          "ber_erasure": 0.0,
+          "survival": 0.744125
+        },
+        "0.2": {
+          "ber_none": 0.07107999999999998,
+          "ber_erasure": 7.479431563201197e-06,
+          "survival": 0.694825
+        },
+        "0.3": {
+          "ber_none": 0.09340000000000001,
+          "ber_erasure": 2.4725422139631564e-05,
+          "survival": 0.596025
+        },
+        "0.4": {
+          "ber_none": 0.11177,
+          "ber_erasure": 1.0615711252653929e-05,
+          "survival": 0.49644999999999995
+        }
+      }
+    },
+    "C|fixed": {
+      "routing_acc": {
+        "broadband": 1.0,
+        "narrowband": 1.0,
+        "sweep": 1.0,
+        "pulse": 1.0,
+        "none": 1.0
+      },
+      "routing_acc_aug": {
+        "broadband": 1.0,
+        "narrowband": 1.0,
+        "sweep": 1.0,
+        "pulse": 1.0,
+        "none": 1.0
+      },
+      "ber": {
+        "broadband": {
+          "awgn_none": 0.172495,
+          "awgn_final": 0.172495,
+          "awgn_oracle": 0.172495,
+          "fade_none": 0.22140000000000004,
+          "fade_final": 0.22140000000000004,
+          "fade_final_aug": 0.22140000000000004,
+          "fade_oracle": 0.22140000000000004
+        },
+        "narrowband": {
+          "awgn_none": 0.08825,
+          "awgn_final": 0.00010999999999999999,
+          "awgn_oracle": 0.00010999999999999999,
+          "fade_none": 0.15965000000000001,
+          "fade_final": 0.007175831810253499,
+          "fade_final_aug": 0.007175831810253499,
+          "fade_oracle": 0.007095
+        },
+        "sweep": {
+          "awgn_none": 0.050005,
+          "awgn_final": 0.003085,
+          "awgn_oracle": 0.003085,
+          "fade_none": 0.09849000000000001,
+          "fade_final": 0.015681429383476653,
+          "fade_final_aug": 0.015681429383476653,
+          "fade_oracle": 0.015970000000000005
+        },
+        "pulse": {
+          "awgn_none": 0.066645,
+          "awgn_final": 0.0,
+          "awgn_oracle": 0.0,
+          "fade_none": 0.07479500000000001,
+          "fade_final": 0.006275941282465977,
+          "fade_final_aug": 0.006275941282465977,
+          "fade_oracle": 0.006275941282465977
+        },
+        "none": {
+          "awgn_none": 0.0,
+          "awgn_final": 0.0,
+          "awgn_oracle": 0.0,
+          "fade_none": 0.005465,
+          "fade_final": 0.005465,
+          "fade_final_aug": 0.005465,
+          "fade_oracle": 0.005465
+        }
+      }
+    },
+    "C|random": {
+      "routing_acc": {
+        "broadband": 1.0,
+        "narrowband": 1.0,
+        "sweep": 1.0,
+        "pulse": 1.0,
+        "none": 1.0
+      },
+      "routing_acc_aug": {
+        "broadband": 1.0,
+        "narrowband": 1.0,
+        "sweep": 1.0,
+        "pulse": 1.0,
+        "none": 1.0
+      },
+      "ber": {
+        "broadband": {
+          "awgn_none": 0.172495,
+          "awgn_final": 0.172495,
+          "awgn_oracle": 0.172495,
+          "fade_none": 0.22140000000000004,
+          "fade_final": 0.22140000000000004,
+          "fade_final_aug": 0.22140000000000004,
+          "fade_oracle": 0.22140000000000004
+        },
+        "narrowband": {
+          "awgn_none": 0.06582,
+          "awgn_final": 0.0007700000000000001,
+          "awgn_oracle": 0.0007700000000000001,
+          "fade_none": 0.05877499999999999,
+          "fade_final": 0.007017132499915063,
+          "fade_final_aug": 0.006828646733051115,
+          "fade_oracle": 0.0066
+        },
+        "sweep": {
+          "awgn_none": 0.0033,
+          "awgn_final": 3.9999999999999996e-05,
+          "awgn_oracle": 3.9999999999999996e-05,
+          "fade_none": 0.05929500000000002,
+          "fade_final": 0.009265398468435831,
+          "fade_final_aug": 0.00944222567191287,
+          "fade_oracle": 0.009609999999999999
+        },
+        "pulse": {
+          "awgn_none": 0.07568,
+          "awgn_final": 0.0,
+          "awgn_oracle": 0.0,
+          "fade_none": 0.09088500000000002,
+          "fade_final": 0.006979285121180667,
+          "fade_final_aug": 0.006979285121180667,
+          "fade_oracle": 0.006979285121180667
+        },
+        "none": {
+          "awgn_none": 0.0,
+          "awgn_final": 0.0,
+          "awgn_oracle": 0.0,
+          "fade_none": 0.005465,
+          "fade_final": 0.005465,
+          "fade_final_aug": 0.005465,
+          "fade_oracle": 0.005465
+        }
+      }
+    },
+    "D|fixed": {
+      "4|broadband": {
+        "none": 0.20195000000000002,
+        "final": 0.20195000000000002,
+        "oracle": 0.20195000000000002,
+        "route_ok": 1.0,
+        "survival": 1.0
+      },
+      "4|narrowband": {
+        "none": 0.1604566666666667,
+        "final": 0.0002966666666666666,
+        "oracle": 0.0002966666666666666,
+        "route_ok": 1.0,
+        "survival": 1.0
+      },
+      "4|sweep": {
+        "none": 0.06327333333333333,
+        "final": 0.003940000000000002,
+        "oracle": 0.003940000000000002,
+        "route_ok": 1.0,
+        "survival": 1.0
+      },
+      "4|pulse": {
+        "none": 0.07088666666666668,
+        "final": 0.00024379991593106347,
+        "oracle": 0.0,
+        "route_ok": 1.0,
+        "survival": 0.40803333333333336
+      },
+      "7|broadband": {
+        "none": 0.1825733333333333,
+        "final": 0.1825733333333333,
+        "oracle": 0.1825733333333333,
+        "route_ok": 1.0,
+        "survival": 1.0
+      },
+      "7|narrowband": {
+        "none": 0.08675999999999999,
+        "final": 0.00011333333333333334,
+        "oracle": 0.00011333333333333334,
+        "route_ok": 1.0,
+        "survival": 1.0
+      },
+      "7|sweep": {
+        "none": 0.05494,
+        "final": 0.0031799999999999997,
+        "oracle": 0.0031799999999999997,
+        "route_ok": 1.0,
+        "survival": 1.0
+      },
+      "7|pulse": {
+        "none": 0.06828999999999999,
+        "final": 0.0,
+        "oracle": 0.0,
+        "route_ok": 1.0,
+        "survival": 0.7416999999999999
+      },
+      "10|broadband": {
+        "none": 0.17177666666666666,
+        "final": 0.17177666666666666,
+        "oracle": 0.17177666666666666,
+        "route_ok": 1.0,
+        "survival": 1.0
+      },
+      "10|narrowband": {
+        "none": 0.06561666666666667,
+        "final": 0.00010666666666666665,
+        "oracle": 0.00010666666666666665,
+        "route_ok": 1.0,
+        "survival": 1.0
+      },
+      "10|sweep": {
+        "none": 0.05003333333333333,
+        "final": 0.0029599999999999995,
+        "oracle": 0.0029599999999999995,
+        "route_ok": 1.0,
+        "survival": 1.0
+      },
+      "10|pulse": {
+        "none": 0.06667,
+        "final": 0.0,
+        "oracle": 0.0,
+        "route_ok": 1.0,
+        "survival": 0.7993166666666666
+      },
+      "13|broadband": {
+        "none": 0.16464666666666664,
+        "final": 0.16464666666666664,
+        "oracle": 0.16464666666666664,
+        "route_ok": 1.0,
+        "survival": 1.0
+      },
+      "13|narrowband": {
+        "none": 0.05744666666666667,
+        "final": 9.333333333333333e-05,
+        "oracle": 9.333333333333333e-05,
+        "route_ok": 1.0,
+        "survival": 1.0
+      },
+      "13|sweep": {
+        "none": 0.04744666666666667,
+        "final": 0.0029799999999999996,
+        "oracle": 0.0029799999999999996,
+        "route_ok": 1.0,
+        "survival": 1.0
+      },
+      "13|pulse": {
+        "none": 0.06654666666666667,
+        "final": 0.0,
+        "oracle": 0.0,
+        "route_ok": 1.0,
+        "survival": 0.8000000000000003
+      },
+      "16|broadband": {
+        "none": 0.16170333333333337,
+        "final": 0.16170333333333337,
+        "oracle": 0.16170333333333337,
+        "route_ok": 1.0,
+        "survival": 1.0
+      },
+      "16|narrowband": {
+        "none": 0.03564,
+        "final": 3.6666666666666666e-05,
+        "oracle": 3.6666666666666666e-05,
+        "route_ok": 1.0,
+        "survival": 1.0
+      },
+      "16|sweep": {
+        "none": 0.04679000000000001,
+        "final": 0.002663333333333333,
+        "oracle": 0.002663333333333333,
+        "route_ok": 1.0,
+        "survival": 1.0
+      },
+      "16|pulse": {
+        "none": 0.06622,
+        "final": 0.0,
+        "oracle": 0.0,
+        "route_ok": 1.0,
+        "survival": 0.8000000000000003
+      }
+    },
+    "D|random": {
+      "4|broadband": {
+        "none": 0.20195000000000002,
+        "final": 0.20195000000000002,
+        "oracle": 0.20195000000000002,
+        "route_ok": 1.0,
+        "survival": 1.0
+      },
+      "4|narrowband": {
+        "none": 0.06994666666666666,
+        "final": 0.00016666666666666666,
+        "oracle": 0.00016666666666666666,
+        "route_ok": 0.9666666666666667,
+        "survival": 1.0
+      },
+      "4|sweep": {
+        "none": 0.05178,
+        "final": 0.00071,
+        "oracle": 0.0007066666666666665,
+        "route_ok": 1.0,
+        "survival": 1.0
+      },
+      "4|pulse": {
+        "none": 0.08678333333333334,
+        "final": 0.0,
+        "oracle": 0.0,
+        "route_ok": 1.0,
+        "survival": 0.3316166666666667
+      },
+      "7|broadband": {
+        "none": 0.1825733333333333,
+        "final": 0.1825733333333333,
+        "oracle": 0.1825733333333333,
+        "route_ok": 1.0,
+        "survival": 1.0
+      },
+      "7|narrowband": {
+        "none": 0.028239999999999998,
+        "final": 6e-05,
+        "oracle": 6e-05,
+        "route_ok": 0.9666666666666667,
+        "survival": 1.0
+      },
+      "7|sweep": {
+        "none": 0.02273666666666667,
+        "final": 0.00023666666666666665,
+        "oracle": 0.00023666666666666665,
+        "route_ok": 1.0,
+        "survival": 1.0
+      },
+      "7|pulse": {
+        "none": 0.08869666666666667,
+        "final": 5.802146794313896e-06,
+        "oracle": 5.802146794313896e-06,
+        "route_ok": 1.0,
+        "survival": 0.5809833333333333
+      },
+      "10|broadband": {
+        "none": 0.17177666666666666,
+        "final": 0.17177666666666666,
+        "oracle": 0.17177666666666666,
+        "route_ok": 1.0,
+        "survival": 1.0
+      },
+      "10|narrowband": {
+        "none": 0.02573333333333333,
+        "final": 4.333333333333334e-05,
+        "oracle": 4.333333333333334e-05,
+        "route_ok": 1.0,
+        "survival": 1.0
+      },
+      "10|sweep": {
+        "none": 0.034929999999999996,
+        "final": 0.0003066666666666667,
+        "oracle": 0.0003066666666666667,
+        "route_ok": 1.0,
+        "survival": 1.0
+      },
+      "10|pulse": {
+        "none": 0.0775633333333333,
+        "final": 0.0,
+        "oracle": 0.0,
+        "route_ok": 1.0,
+        "survival": 0.6633500000000001
+      },
+      "13|broadband": {
+        "none": 0.16464666666666664,
+        "final": 0.16464666666666664,
+        "oracle": 0.16464666666666664,
+        "route_ok": 1.0,
+        "survival": 1.0
+      },
+      "13|narrowband": {
+        "none": 0.05939666666666667,
+        "final": 0.00022,
+        "oracle": 0.00022,
+        "route_ok": 1.0,
+        "survival": 1.0
+      },
+      "13|sweep": {
+        "none": 0.02757,
+        "final": 4.6666666666666665e-05,
+        "oracle": 3.9999999999999996e-05,
+        "route_ok": 1.0,
+        "survival": 1.0
+      },
+      "13|pulse": {
+        "none": 0.08140333333333334,
+        "final": 6.640106241699867e-06,
+        "oracle": 6.640106241699867e-06,
+        "route_ok": 1.0,
+        "survival": 0.6409500000000001
+      },
+      "16|broadband": {
+        "none": 0.16170333333333337,
+        "final": 0.16170333333333337,
+        "oracle": 0.16170333333333337,
+        "route_ok": 1.0,
+        "survival": 1.0
+      },
+      "16|narrowband": {
+        "none": 0.04430666666666667,
+        "final": 9.333333333333333e-05,
+        "oracle": 9.333333333333333e-05,
+        "route_ok": 1.0,
+        "survival": 1.0
+      },
+      "16|sweep": {
+        "none": 0.023186666666666668,
+        "final": 0.00022,
+        "oracle": 0.00022,
+        "route_ok": 0.9666666666666667,
+        "survival": 1.0
+      },
+      "16|pulse": {
+        "none": 0.08174000000000001,
+        "final": 0.0,
+        "oracle": 0.0,
+        "route_ok": 1.0,
+        "survival": 0.6452333333333333
+      }
+    },
+    "E|fixed": {
+      "RS(255,223)|6": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 1.0,
+        "erased_bytes": 82.456
+      },
+      "RS(255,223)|8": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 1.0,
+        "erased_bytes": 82.452
+      },
+      "RS(255,223)|10": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 1.0,
+        "erased_bytes": 82.445
+      },
+      "RS(255,223)|12": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 1.0,
+        "erased_bytes": 82.422
+      },
+      "RS(255,223)|14": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 1.0,
+        "erased_bytes": 82.45
+      },
+      "RS(255,223)|16": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 1.0,
+        "erased_bytes": 82.483
+      },
+      "RS(255,191)|6": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 1.0,
+        "erased_bytes": 82.471
+      },
+      "RS(255,191)|8": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 1.0,
+        "erased_bytes": 82.446
+      },
+      "RS(255,191)|10": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 1.0,
+        "erased_bytes": 82.464
+      },
+      "RS(255,191)|12": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 1.0,
+        "erased_bytes": 82.452
+      },
+      "RS(255,191)|14": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 1.0,
+        "erased_bytes": 82.478
+      },
+      "RS(255,191)|16": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 1.0,
+        "erased_bytes": 82.493
+      },
+      "RS(255,159)|6": {
+        "nocorr": 0.9890000000000001,
+        "blanker": 1.0,
+        "erasure": 0.0,
+        "erased_bytes": 82.456
+      },
+      "RS(255,159)|8": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 0.0,
+        "erased_bytes": 82.427
+      },
+      "RS(255,159)|10": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 0.0,
+        "erased_bytes": 82.432
+      },
+      "RS(255,159)|12": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 0.0,
+        "erased_bytes": 82.457
+      },
+      "RS(255,159)|14": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 0.0,
+        "erased_bytes": 82.494
+      },
+      "RS(255,159)|16": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 0.0,
+        "erased_bytes": 82.494
+      },
+      "RS(255,127)|6": {
+        "nocorr": 0.027999999999999997,
+        "blanker": 1.0,
+        "erasure": 0.0,
+        "erased_bytes": 82.507
+      },
+      "RS(255,127)|8": {
+        "nocorr": 0.25299999999999995,
+        "blanker": 1.0,
+        "erasure": 0.0,
+        "erased_bytes": 82.487
+      },
+      "RS(255,127)|10": {
+        "nocorr": 0.648,
+        "blanker": 1.0,
+        "erasure": 0.0,
+        "erased_bytes": 82.47
+      },
+      "RS(255,127)|12": {
+        "nocorr": 0.87,
+        "blanker": 1.0,
+        "erasure": 0.0,
+        "erased_bytes": 82.449
+      },
+      "RS(255,127)|14": {
+        "nocorr": 0.961,
+        "blanker": 1.0,
+        "erasure": 0.0,
+        "erased_bytes": 82.442
+      },
+      "RS(255,127)|16": {
+        "nocorr": 0.9890000000000001,
+        "blanker": 1.0,
+        "erasure": 0.0,
+        "erased_bytes": 82.47
+      }
+    },
+    "E|random": {
+      "RS(255,223)|6": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 1.0,
+        "erased_bytes": 121.069
+      },
+      "RS(255,223)|8": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 1.0,
+        "erased_bytes": 122.135
+      },
+      "RS(255,223)|10": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 1.0,
+        "erased_bytes": 122.807
+      },
+      "RS(255,223)|12": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 1.0,
+        "erased_bytes": 123.061
+      },
+      "RS(255,223)|14": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 1.0,
+        "erased_bytes": 122.784
+      },
+      "RS(255,223)|16": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 1.0,
+        "erased_bytes": 123.459
+      },
+      "RS(255,191)|6": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 0.996,
+        "erased_bytes": 121.085
+      },
+      "RS(255,191)|8": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 0.996,
+        "erased_bytes": 122.16
+      },
+      "RS(255,191)|10": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 0.998,
+        "erased_bytes": 122.832
+      },
+      "RS(255,191)|12": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 0.9990000000000001,
+        "erased_bytes": 123.085
+      },
+      "RS(255,191)|14": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 0.998,
+        "erased_bytes": 122.812
+      },
+      "RS(255,191)|16": {
+        "nocorr": 1.0,
+        "blanker": 1.0,
+        "erasure": 0.997,
+        "erased_bytes": 123.459
+      },
+      "RS(255,159)|6": {
+        "nocorr": 0.8490000000000001,
+        "blanker": 1.0,
+        "erasure": 0.7930000000000001,
+        "erased_bytes": 121.072
+      },
+      "RS(255,159)|8": {
+        "nocorr": 0.917,
+        "blanker": 1.0,
+        "erasure": 0.802,
+        "erased_bytes": 122.152
+      },
+      "RS(255,159)|10": {
+        "nocorr": 0.939,
+        "blanker": 1.0,
+        "erasure": 0.805,
+        "erased_bytes": 122.825
+      },
+      "RS(255,159)|12": {
+        "nocorr": 0.948,
+        "blanker": 1.0,
+        "erasure": 0.816,
+        "erased_bytes": 123.079
+      },
+      "RS(255,159)|14": {
+        "nocorr": 0.9590000000000001,
+        "blanker": 1.0,
+        "erasure": 0.802,
+        "erased_bytes": 122.805
+      },
+      "RS(255,159)|16": {
+        "nocorr": 0.97,
+        "blanker": 1.0,
+        "erasure": 0.8079999999999999,
+        "erased_bytes": 123.462
+      },
+      "RS(255,127)|6": {
+        "nocorr": 0.49200000000000005,
+        "blanker": 0.9810000000000001,
+        "erasure": 0.39099999999999996,
+        "erased_bytes": 121.082
+      },
+      "RS(255,127)|8": {
+        "nocorr": 0.6579999999999998,
+        "blanker": 0.983,
+        "erasure": 0.4049999999999999,
+        "erased_bytes": 122.197
+      },
+      "RS(255,127)|10": {
+        "nocorr": 0.72,
+        "blanker": 0.98,
+        "erasure": 0.4260000000000001,
+        "erased_bytes": 122.824
+      },
+      "RS(255,127)|12": {
+        "nocorr": 0.772,
+        "blanker": 0.9800000000000001,
+        "erasure": 0.43999999999999995,
+        "erased_bytes": 123.083
+      },
+      "RS(255,127)|14": {
+        "nocorr": 0.7909999999999998,
+        "blanker": 0.975,
+        "erasure": 0.44799999999999995,
+        "erased_bytes": 122.77
+      },
+      "RS(255,127)|16": {
+        "nocorr": 0.8190000000000001,
+        "blanker": 0.9790000000000001,
+        "erasure": 0.44300000000000006,
+        "erased_bytes": 123.438
+      }
+    }
+  },
+  "scenario": [
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "narrowband",
+      10
+    ],
+    [
+      "narrowband",
+      10
+    ],
+    [
+      "narrowband",
+      10
+    ],
+    [
+      "narrowband",
+      10
+    ],
+    [
+      "narrowband",
+      10
+    ],
+    [
+      "narrowband",
+      10
+    ],
+    [
+      "narrowband",
+      10
+    ],
+    [
+      "narrowband",
+      10
+    ],
+    [
+      "narrowband",
+      10
+    ],
+    [
+      "narrowband",
+      10
+    ],
+    [
+      "narrowband",
+      10
+    ],
+    [
+      "narrowband",
+      10
+    ],
+    [
+      "narrowband",
+      10
+    ],
+    [
+      "narrowband",
+      10
+    ],
+    [
+      "narrowband",
+      10
+    ],
+    [
+      "sweep",
+      10
+    ],
+    [
+      "sweep",
+      10
+    ],
+    [
+      "sweep",
+      10
+    ],
+    [
+      "sweep",
+      10
+    ],
+    [
+      "sweep",
+      10
+    ],
+    [
+      "sweep",
+      10
+    ],
+    [
+      "sweep",
+      10
+    ],
+    [
+      "sweep",
+      10
+    ],
+    [
+      "sweep",
+      10
+    ],
+    [
+      "sweep",
+      10
+    ],
+    [
+      "sweep",
+      10
+    ],
+    [
+      "sweep",
+      10
+    ],
+    [
+      "sweep",
+      10
+    ],
+    [
+      "sweep",
+      10
+    ],
+    [
+      "sweep",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "broadband",
+      10
+    ],
+    [
+      "sweep",
+      10
+    ],
+    [
+      "sweep",
+      10
+    ],
+    [
+      "sweep",
+      10
+    ],
+    [
+      "sweep",
+      10
+    ],
+    [
+      "sweep",
+      10
+    ],
+    [
+      "sweep",
+      10
+    ],
+    [
+      "sweep",
+      10
+    ],
+    [
+      "sweep",
+      10
+    ],
+    [
+      "sweep",
+      10
+    ],
+    [
+      "sweep",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ],
+    [
+      "pulse",
+      10
+    ]
+  ],
+  "segments": [
+    [
+      "BB-1",
+      0,
+      20
+    ],
+    [
+      "NB",
+      20,
+      35
+    ],
+    [
+      "SW-1",
+      35,
+      50
+    ],
+    [
+      "PL-1",
+      50,
+      70
+    ],
+    [
+      "BB-2",
+      70,
+      80
+    ],
+    [
+      "SW-2",
+      80,
+      90
+    ],
+    [
+      "PL-2",
+      90,
+      100
+    ]
+  ],
+  "routers": {
+    "fixed": {
+      "n_train": 270,
+      "train_acc": 1.0
+    },
+    "random": {
+      "n_train": 270,
+      "train_acc": 1.0
+    }
+  },
+  "numba": true,
+  "elapsed_min": 54.604404882589975,
+  "timestamp": "2026-09-11T15:15:43.856679"
+}

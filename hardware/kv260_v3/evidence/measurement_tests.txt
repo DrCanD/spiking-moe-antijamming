@@ -1,0 +1,24 @@
+test_calibrator_stops_on_insufficient_capacity (tests.test_measurement.MeasurementTests.test_calibrator_stops_on_insufficient_capacity) ... [KAL ] FE_dense: deneme 1, pace=0 -> 0.4000 MS/s (hedef 1.0000)
+ok
+test_calibrator_uses_measured_wait_cost (tests.test_measurement.MeasurementTests.test_calibrator_uses_measured_wait_cost) ... [KAL ] FE_gate: deneme 1, pace=0 -> 1.5000 MS/s (hedef 1.0000)
+[KAL ] FE_gate: deneme 2, pace=33 -> 0.7538 MS/s (hedef 1.0000)
+[KAL ] FE_gate: deneme 3, pace=16 -> 1.0135 MS/s (hedef 1.0000)
+[KAL ] FE_gate: deneme 4, pace=24 -> 0.8721 MS/s (hedef 1.0000)
+[KAL ] FE_gate: deneme 5, pace=20 -> 0.9375 MS/s (hedef 1.0000)
+[KAL ] FE_gate: deneme 6, pace=18 -> 0.9740 MS/s (hedef 1.0000)
+[KAL ] FE_gate: deneme 7, pace=17 -> 0.9934 MS/s (hedef 1.0000)
+ok
+test_ci_respects_between_repeat_variation (tests.test_measurement.MeasurementTests.test_ci_respects_between_repeat_variation) ... ok
+test_nanojoule_conversion (tests.test_measurement.MeasurementTests.test_nanojoule_conversion) ... ok
+test_old_four_mode_records_still_analyse (tests.test_measurement.MeasurementTests.test_old_four_mode_records_still_analyse) ... ok
+test_one_repeat_no_ci (tests.test_measurement.MeasurementTests.test_one_repeat_no_ci) ... ok
+test_pairing_and_replica_division (tests.test_measurement.MeasurementTests.test_pairing_and_replica_division) ... ok
+test_rate_below_target_rejected (tests.test_measurement.MeasurementTests.test_rate_below_target_rejected) ... ok
+test_v2_records_with_gate_mode_still_analyse (tests.test_measurement.MeasurementTests.test_v2_records_with_gate_mode_still_analyse) ... ok
+test_v3_ablation_contrasts (tests.test_measurement.MeasurementTests.test_v3_ablation_contrasts) ... ok
+test_wrong_image_rejected (tests.test_measurement.MeasurementTests.test_wrong_image_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.003s
+
+OK

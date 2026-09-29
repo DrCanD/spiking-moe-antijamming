@@ -1,0 +1,13 @@
+{
+  "reference": "frozen dense Q20 state, Q2.30 coefficients",
+  "candidate": "v3: Q1.17 coefficients (18 bit), Q20 state; dense path and lazy path (Q1.17 jump table; 64 LSB sleeping margin; max jump 256)",
+  "source_sha256": {
+    "fixed_reference.py": "7881e8d3f64bc68ae257d2027acb4d2c448962122d90e5e1a7ff45619e893ebb",
+    "validate_fixed.py": "c5fb3ef4591c1136dc6bf105383a8f3b4f5c0e4b737313f58d295867938568ac"
+  },
+  "quantization": "round-to-nearest-even Q6.10 then saturate int16",
+  "regression_streams": 192,
+  "fresh_streams": 96,
+  "quality": "paired BLER, CRC, actions; no parameter tuning after this run",
+  "scope": "Fixed-point frontend only; experts/decoder simulated in existing CPU reference, not a full fixed-point receiver"
+}

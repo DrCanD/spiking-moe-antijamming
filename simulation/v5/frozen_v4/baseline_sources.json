@@ -1,0 +1,10 @@
+{
+  "origin": "v3_20260925_47d8ea1625",
+  "files": {
+    "core.py": "d6ab2bc3063489c029c681a0d47d0c64af124b315f09028409a49d4f3d3476b3",
+    "reference_core.py": "b7396d0b09f3e93207dfed946f09c0b21f72c67ee08d719a8e29cae14f8d1635",
+    "streaming_v3.py": "967de316ee45e88f9930b356369ffed732d5cae23e22ec32553d93a3d2f38412",
+    "coding.py": "b4a07fa573e2cd1a2d6bd9ac40de403d95048738220fdd014aedc4705e23d25e",
+    "requirements.txt": "a95b282b88ad163d5f207bb5a3376452b7c655160bd92062771c30b6367d4b66"
+  }
+}

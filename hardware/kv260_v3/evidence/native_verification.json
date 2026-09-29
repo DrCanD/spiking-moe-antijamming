@@ -1,0 +1,194 @@
+{
+  "vectors": 14,
+  "sample_count": 1208000,
+  "native_frontend_matches_python": true,
+  "numerics": "v3: Q1.17 rotations (18-bit), Q20 state (24-bit registers); see evidence/width_sweep_summary.json",
+  "source_digest": "90e0039e5aaad84606f142049be6d337fe62a4f9ef597cfc5f363c82bd7c067f",
+  "integer_oracle_sha256": "7881e8d3f64bc68ae257d2027acb4d2c448962122d90e5e1a7ff45619e893ebb",
+  "vector_manifest_sha256": "462aa64cea7f15b7fc7c80e736d37dbedcad2a0548017880a68ec9071da00df2",
+  "fft_oracle": "existing native C++ implementation; actual ap_int and RTL verification required by build flow",
+  "checks": [
+    {
+      "name": "fixed_none",
+      "python_cpp_dense_equal": true,
+      "python_cpp_gate_equal": true,
+      "encoder_equal": true,
+      "bank_skips": 89981,
+      "variants_equal": [
+        "dense_rom==dense",
+        "gate_iso==gate",
+        "gate_iso_rom==gate",
+        "gate_iso_rom_bank==gate"
+      ]
+    },
+    {
+      "name": "fixed_narrowband",
+      "python_cpp_dense_equal": true,
+      "python_cpp_gate_equal": true,
+      "encoder_equal": true,
+      "bank_skips": 3,
+      "variants_equal": [
+        "dense_rom==dense",
+        "gate_iso==gate",
+        "gate_iso_rom==gate",
+        "gate_iso_rom_bank==gate"
+      ]
+    },
+    {
+      "name": "fixed_sweep",
+      "python_cpp_dense_equal": true,
+      "python_cpp_gate_equal": true,
+      "encoder_equal": true,
+      "bank_skips": 4,
+      "variants_equal": [
+        "dense_rom==dense",
+        "gate_iso==gate",
+        "gate_iso_rom==gate",
+        "gate_iso_rom_bank==gate"
+      ]
+    },
+    {
+      "name": "fixed_pulse",
+      "python_cpp_dense_equal": true,
+      "python_cpp_gate_equal": true,
+      "encoder_equal": true,
+      "bank_skips": 70933,
+      "variants_equal": [
+        "dense_rom==dense",
+        "gate_iso==gate",
+        "gate_iso_rom==gate",
+        "gate_iso_rom_bank==gate"
+      ]
+    },
+    {
+      "name": "fixed_broadband",
+      "python_cpp_dense_equal": true,
+      "python_cpp_gate_equal": true,
+      "encoder_equal": true,
+      "bank_skips": 27,
+      "variants_equal": [
+        "dense_rom==dense",
+        "gate_iso==gate",
+        "gate_iso_rom==gate",
+        "gate_iso_rom_bank==gate"
+      ]
+    },
+    {
+      "name": "fixed_switching",
+      "python_cpp_dense_equal": true,
+      "python_cpp_gate_equal": true,
+      "encoder_equal": true,
+      "bank_skips": 29413,
+      "variants_equal": [
+        "dense_rom==dense",
+        "gate_iso==gate",
+        "gate_iso_rom==gate",
+        "gate_iso_rom_bank==gate"
+      ]
+    },
+    {
+      "name": "random_none",
+      "python_cpp_dense_equal": true,
+      "python_cpp_gate_equal": true,
+      "encoder_equal": true,
+      "bank_skips": 94459,
+      "variants_equal": [
+        "dense_rom==dense",
+        "gate_iso==gate",
+        "gate_iso_rom==gate",
+        "gate_iso_rom_bank==gate"
+      ]
+    },
+    {
+      "name": "random_narrowband",
+      "python_cpp_dense_equal": true,
+      "python_cpp_gate_equal": true,
+      "encoder_equal": true,
+      "bank_skips": 3,
+      "variants_equal": [
+        "dense_rom==dense",
+        "gate_iso==gate",
+        "gate_iso_rom==gate",
+        "gate_iso_rom_bank==gate"
+      ]
+    },
+    {
+      "name": "random_sweep",
+      "python_cpp_dense_equal": true,
+      "python_cpp_gate_equal": true,
+      "encoder_equal": true,
+      "bank_skips": 3,
+      "variants_equal": [
+        "dense_rom==dense",
+        "gate_iso==gate",
+        "gate_iso_rom==gate",
+        "gate_iso_rom_bank==gate"
+      ]
+    },
+    {
+      "name": "random_pulse",
+      "python_cpp_dense_equal": true,
+      "python_cpp_gate_equal": true,
+      "encoder_equal": true,
+      "bank_skips": 75183,
+      "variants_equal": [
+        "dense_rom==dense",
+        "gate_iso==gate",
+        "gate_iso_rom==gate",
+        "gate_iso_rom_bank==gate"
+      ]
+    },
+    {
+      "name": "random_broadband",
+      "python_cpp_dense_equal": true,
+      "python_cpp_gate_equal": true,
+      "encoder_equal": true,
+      "bank_skips": 16,
+      "variants_equal": [
+        "dense_rom==dense",
+        "gate_iso==gate",
+        "gate_iso_rom==gate",
+        "gate_iso_rom_bank==gate"
+      ]
+    },
+    {
+      "name": "random_switching",
+      "python_cpp_dense_equal": true,
+      "python_cpp_gate_equal": true,
+      "encoder_equal": true,
+      "bank_skips": 23325,
+      "variants_equal": [
+        "dense_rom==dense",
+        "gate_iso==gate",
+        "gate_iso_rom==gate",
+        "gate_iso_rom_bank==gate"
+      ]
+    },
+    {
+      "name": "edge_silence",
+      "python_cpp_dense_equal": true,
+      "python_cpp_gate_equal": true,
+      "encoder_equal": true,
+      "bank_skips": 4000,
+      "variants_equal": [
+        "dense_rom==dense",
+        "gate_iso==gate",
+        "gate_iso_rom==gate",
+        "gate_iso_rom_bank==gate"
+      ]
+    },
+    {
+      "name": "rtl_smoke",
+      "python_cpp_dense_equal": true,
+      "python_cpp_gate_equal": true,
+      "encoder_equal": true,
+      "bank_skips": 1592,
+      "variants_equal": [
+        "dense_rom==dense",
+        "gate_iso==gate",
+        "gate_iso_rom==gate",
+        "gate_iso_rom_bank==gate"
+      ]
+    }
+  ]
+}

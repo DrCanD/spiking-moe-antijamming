@@ -1,0 +1,1 @@
+{"dependencies":{"llvmlite":"0.49.0","numba":"0.67.0","numpy":"2.3.5","reedsolo":"1.7.0","scikit-learn":"1.8.0","scipy":"1.17.0"},"platform":"Linux-6.6.122+-x86_64-with-glibc2.39","python":"3.13.15","thread_limits":{"NUMBA_NUM_THREADS":"1","OMP_NUM_THREADS":"1","OPENBLAS_NUM_THREADS":"1"}}

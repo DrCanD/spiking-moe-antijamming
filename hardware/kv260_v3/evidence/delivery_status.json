@@ -1,0 +1,99 @@
+{
+  "package": "UAV_KV260_Rezonator_Gate_v3_20260927",
+  "local_syntax_passed": true,
+  "fixed_quality_streams": 288,
+  "fixed_quality_words": 3107,
+  "native_vectors": 14,
+  "native_samples": 1208000,
+  "four_replica_selected_vectors": [
+    "rtl_smoke",
+    "fixed_narrowband"
+  ],
+  "measurement_unit_tests": 11,
+  "actual_ap_int_csim_completed": false,
+  "hls_synthesis_completed": false,
+  "rtl_cosim_completed": false,
+  "vivado_implementation_completed": false,
+  "physical_power_measured": false,
+  "hardware_status": "Source/build package only; hardware gates must pass on user workstation and KV260",
+  "revision": "v3 2026-09-27: RF bank Q1.17 rotations (18-bit, one DSP48E2 per product) with Q20 state (24-bit registers); registered DSP multipliers (BIND_OP latency 3) with DEPENDENCE pragmas for II=1; EN_ROMISO=128 jump-table address isolation; EN_BANK=256 whole-bank skip; v2 (Q2.30/28-bit) numerics removed",
+  "local_ap_int_csim_open_source_headers": {
+    "compiler": "g++",
+    "flags": "-DUSE_AP_INT -DN_REPL=4",
+    "vectors": 14,
+    "modes": 7,
+    "passed": 98,
+    "note": "AMD open-source HLS_arbitrary_Precision_Types headers; not the Vitis 2025.2 csim itself"
+  },
+  "native_four_replica_all_vectors": {
+    "passed": 98,
+    "modes": [
+      "dense",
+      "gate",
+      "fft",
+      "gate_iso",
+      "dense_rom",
+      "gate_iso_rom",
+      "gate_iso_rom_bank"
+    ]
+  },
+  "board_verify_path_dry_run": {
+    "checks": 56,
+    "backend": "C model via ctypes, not hardware"
+  },
+  "fixed_quality_result": {
+    "new_failures": 0,
+    "different_action_streams": 0,
+    "undetected_reference": 0,
+    "undetected_v3_gate": 0,
+    "undetected_v3_dense": 0,
+    "reference": "frozen dense Q2.30/Q20"
+  },
+  "width_sweep": {
+    "F17_S20_M64": {
+      "coef_bits": 18,
+      "state_frac": 20,
+      "passed": true
+    },
+    "F15_S20_M64": {
+      "coef_bits": 16,
+      "state_frac": 20,
+      "passed": false
+    },
+    "F13_S20_M64": {
+      "coef_bits": 14,
+      "state_frac": 20,
+      "passed": false
+    },
+    "F17_S16_M64": {
+      "coef_bits": 18,
+      "state_frac": 16,
+      "passed": false
+    },
+    "F17_S16_M16": {
+      "coef_bits": 18,
+      "state_frac": 16,
+      "passed": false
+    },
+    "F15_S16_M16": {
+      "coef_bits": 16,
+      "state_frac": 16,
+      "passed": false
+    },
+    "F11_S14_M16": {
+      "coef_bits": 12,
+      "state_frac": 14,
+      "passed": false
+    }
+  },
+  "board_script_dry_run": {
+    "verify_vectors_checks": 98,
+    "modes": 7,
+    "measurement_loop": "simulated timing/sensor, 7 modes, archive written"
+  },
+  "hls_not_verified_here": [
+    "BIND_OP latency=3 binding and resulting II of RF_BANK (reported by build_kv260.py after synth)",
+    "DEPENDENCE pragmas on the band-state arrays",
+    "timing closure at 83.3 MHz"
+  ]
+}

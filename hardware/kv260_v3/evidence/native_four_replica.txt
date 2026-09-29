@@ -1,0 +1,200 @@
+# v3 (27 Sep 2026): tb_gate, 14 vectors x 7 modes, N_REPL=4
+# (a) g++ native integer build: g++ -O2 -std=c++14 -DN_REPL=4
+PASS fixed_none dense
+PASS fixed_none gate
+PASS fixed_none fft
+PASS fixed_none gate_iso
+PASS fixed_none dense_rom
+PASS fixed_none gate_iso_rom
+PASS fixed_none gate_iso_rom_bank bank_skips=89981
+PASS fixed_narrowband dense
+PASS fixed_narrowband gate
+PASS fixed_narrowband fft
+PASS fixed_narrowband gate_iso
+PASS fixed_narrowband dense_rom
+PASS fixed_narrowband gate_iso_rom
+PASS fixed_narrowband gate_iso_rom_bank bank_skips=3
+PASS fixed_sweep dense
+PASS fixed_sweep gate
+PASS fixed_sweep fft
+PASS fixed_sweep gate_iso
+PASS fixed_sweep dense_rom
+PASS fixed_sweep gate_iso_rom
+PASS fixed_sweep gate_iso_rom_bank bank_skips=4
+PASS fixed_pulse dense
+PASS fixed_pulse gate
+PASS fixed_pulse fft
+PASS fixed_pulse gate_iso
+PASS fixed_pulse dense_rom
+PASS fixed_pulse gate_iso_rom
+PASS fixed_pulse gate_iso_rom_bank bank_skips=70933
+PASS fixed_broadband dense
+PASS fixed_broadband gate
+PASS fixed_broadband fft
+PASS fixed_broadband gate_iso
+PASS fixed_broadband dense_rom
+PASS fixed_broadband gate_iso_rom
+PASS fixed_broadband gate_iso_rom_bank bank_skips=27
+PASS fixed_switching dense
+PASS fixed_switching gate
+PASS fixed_switching fft
+PASS fixed_switching gate_iso
+PASS fixed_switching dense_rom
+PASS fixed_switching gate_iso_rom
+PASS fixed_switching gate_iso_rom_bank bank_skips=29413
+PASS random_none dense
+PASS random_none gate
+PASS random_none fft
+PASS random_none gate_iso
+PASS random_none dense_rom
+PASS random_none gate_iso_rom
+PASS random_none gate_iso_rom_bank bank_skips=94459
+PASS random_narrowband dense
+PASS random_narrowband gate
+PASS random_narrowband fft
+PASS random_narrowband gate_iso
+PASS random_narrowband dense_rom
+PASS random_narrowband gate_iso_rom
+PASS random_narrowband gate_iso_rom_bank bank_skips=3
+PASS random_sweep dense
+PASS random_sweep gate
+PASS random_sweep fft
+PASS random_sweep gate_iso
+PASS random_sweep dense_rom
+PASS random_sweep gate_iso_rom
+PASS random_sweep gate_iso_rom_bank bank_skips=3
+PASS random_pulse dense
+PASS random_pulse gate
+PASS random_pulse fft
+PASS random_pulse gate_iso
+PASS random_pulse dense_rom
+PASS random_pulse gate_iso_rom
+PASS random_pulse gate_iso_rom_bank bank_skips=75183
+PASS random_broadband dense
+PASS random_broadband gate
+PASS random_broadband fft
+PASS random_broadband gate_iso
+PASS random_broadband dense_rom
+PASS random_broadband gate_iso_rom
+PASS random_broadband gate_iso_rom_bank bank_skips=16
+PASS random_switching dense
+PASS random_switching gate
+PASS random_switching fft
+PASS random_switching gate_iso
+PASS random_switching dense_rom
+PASS random_switching gate_iso_rom
+PASS random_switching gate_iso_rom_bank bank_skips=23325
+PASS edge_silence dense
+PASS edge_silence gate
+PASS edge_silence fft
+PASS edge_silence gate_iso
+PASS edge_silence dense_rom
+PASS edge_silence gate_iso_rom
+PASS edge_silence gate_iso_rom_bank bank_skips=4000
+PASS rtl_smoke dense
+PASS rtl_smoke gate
+PASS rtl_smoke fft
+PASS rtl_smoke gate_iso
+PASS rtl_smoke dense_rom
+PASS rtl_smoke gate_iso_rom
+PASS rtl_smoke gate_iso_rom_bank bank_skips=1592
+
+# (b) AMD open-source ap_int headers: g++ -O2 -std=c++14 -DUSE_AP_INT -DN_REPL=4 (state-range assertions active)
+PASS fixed_none dense
+PASS fixed_none gate
+PASS fixed_none fft
+PASS fixed_none gate_iso
+PASS fixed_none dense_rom
+PASS fixed_none gate_iso_rom
+PASS fixed_none gate_iso_rom_bank bank_skips=89981
+PASS fixed_narrowband dense
+PASS fixed_narrowband gate
+PASS fixed_narrowband fft
+PASS fixed_narrowband gate_iso
+PASS fixed_narrowband dense_rom
+PASS fixed_narrowband gate_iso_rom
+PASS fixed_narrowband gate_iso_rom_bank bank_skips=3
+PASS fixed_sweep dense
+PASS fixed_sweep gate
+PASS fixed_sweep fft
+PASS fixed_sweep gate_iso
+PASS fixed_sweep dense_rom
+PASS fixed_sweep gate_iso_rom
+PASS fixed_sweep gate_iso_rom_bank bank_skips=4
+PASS fixed_pulse dense
+PASS fixed_pulse gate
+PASS fixed_pulse fft
+PASS fixed_pulse gate_iso
+PASS fixed_pulse dense_rom
+PASS fixed_pulse gate_iso_rom
+PASS fixed_pulse gate_iso_rom_bank bank_skips=70933
+PASS fixed_broadband dense
+PASS fixed_broadband gate
+PASS fixed_broadband fft
+PASS fixed_broadband gate_iso
+PASS fixed_broadband dense_rom
+PASS fixed_broadband gate_iso_rom
+PASS fixed_broadband gate_iso_rom_bank bank_skips=27
+PASS fixed_switching dense
+PASS fixed_switching gate
+PASS fixed_switching fft
+PASS fixed_switching gate_iso
+PASS fixed_switching dense_rom
+PASS fixed_switching gate_iso_rom
+PASS fixed_switching gate_iso_rom_bank bank_skips=29413
+PASS random_none dense
+PASS random_none gate
+PASS random_none fft
+PASS random_none gate_iso
+PASS random_none dense_rom
+PASS random_none gate_iso_rom
+PASS random_none gate_iso_rom_bank bank_skips=94459
+PASS random_narrowband dense
+PASS random_narrowband gate
+PASS random_narrowband fft
+PASS random_narrowband gate_iso
+PASS random_narrowband dense_rom
+PASS random_narrowband gate_iso_rom
+PASS random_narrowband gate_iso_rom_bank bank_skips=3
+PASS random_sweep dense
+PASS random_sweep gate
+PASS random_sweep fft
+PASS random_sweep gate_iso
+PASS random_sweep dense_rom
+PASS random_sweep gate_iso_rom
+PASS random_sweep gate_iso_rom_bank bank_skips=3
+PASS random_pulse dense
+PASS random_pulse gate
+PASS random_pulse fft
+PASS random_pulse gate_iso
+PASS random_pulse dense_rom
+PASS random_pulse gate_iso_rom
+PASS random_pulse gate_iso_rom_bank bank_skips=75183
+PASS random_broadband dense
+PASS random_broadband gate
+PASS random_broadband fft
+PASS random_broadband gate_iso
+PASS random_broadband dense_rom
+PASS random_broadband gate_iso_rom
+PASS random_broadband gate_iso_rom_bank bank_skips=16
+PASS random_switching dense
+PASS random_switching gate
+PASS random_switching fft
+PASS random_switching gate_iso
+PASS random_switching dense_rom
+PASS random_switching gate_iso_rom
+PASS random_switching gate_iso_rom_bank bank_skips=23325
+PASS edge_silence dense
+PASS edge_silence gate
+PASS edge_silence fft
+PASS edge_silence gate_iso
+PASS edge_silence dense_rom
+PASS edge_silence gate_iso_rom
+PASS edge_silence gate_iso_rom_bank bank_skips=4000
+PASS rtl_smoke dense
+PASS rtl_smoke gate
+PASS rtl_smoke fft
+PASS rtl_smoke gate_iso
+PASS rtl_smoke dense_rom
+PASS rtl_smoke gate_iso_rom
+PASS rtl_smoke gate_iso_rom_bank bank_skips=1592

@@ -1,0 +1,215 @@
+{
+  "id": "UAV_Jamming_v5_Block_Rescue_Pilot_20260925",
+  "seed_namespace": 925202655,
+  "profile_ids": {
+    "smoke": 50,
+    "local_pilot": 51,
+    "development": 52,
+    "validation": 53
+  },
+  "stage_ids": {
+    "training": 10,
+    "channel": 20,
+    "payload": 30
+  },
+  "conditions": [
+    "fixed",
+    "random"
+  ],
+  "frontends": [
+    "spike",
+    "analog_delta"
+  ],
+  "cases": [
+    {
+      "name": "clean",
+      "dwell_ms": 30,
+      "clean": true
+    },
+    {
+      "name": "nominal",
+      "dwell_ms": 30
+    },
+    {
+      "name": "short_dwell",
+      "dwell_ms": 15
+    },
+    {
+      "name": "low_snr",
+      "dwell_ms": 30,
+      "snr_db": 4
+    },
+    {
+      "name": "strong_pulse",
+      "dwell_ms": 30,
+      "pulse_relative_db": [
+        6
+      ]
+    },
+    {
+      "name": "high_duty",
+      "dwell_ms": 30,
+      "pulse_duty_range": [
+        0.35,
+        0.5
+      ],
+      "fixed_pulse_duty": 0.425
+    }
+  ],
+  "profiles": {
+    "smoke": {
+      "model_seeds": [
+        601
+      ],
+      "trials": 1,
+      "cases": [
+        "clean",
+        "nominal"
+      ],
+      "train_streams_per_class": 3,
+      "trees": 20,
+      "chunk": 1
+    },
+    "local_pilot": {
+      "model_seeds": [
+        607,
+        613,
+        617
+      ],
+      "trials": 3,
+      "cases": [
+        "clean",
+        "nominal",
+        "short_dwell",
+        "low_snr",
+        "strong_pulse",
+        "high_duty"
+      ],
+      "train_streams_per_class": 20,
+      "trees": 100,
+      "chunk": 1
+    },
+    "development": {
+      "model_seeds": [
+        631,
+        641,
+        653,
+        661,
+        673
+      ],
+      "trials": 12,
+      "cases": [
+        "clean",
+        "nominal",
+        "short_dwell",
+        "low_snr",
+        "strong_pulse",
+        "high_duty"
+      ],
+      "train_streams_per_class": 20,
+      "trees": 100,
+      "chunk": 2
+    },
+    "validation": {
+      "model_seeds": [
+        691,
+        701,
+        719,
+        733,
+        751
+      ],
+      "trials": 20,
+      "cases": [
+        "clean",
+        "nominal",
+        "short_dwell",
+        "low_snr",
+        "strong_pulse",
+        "high_duty"
+      ],
+      "train_streams_per_class": 20,
+      "trees": 100,
+      "chunk": 2
+    }
+  },
+  "selection": {
+    "candidates": [
+      "current_guard8",
+      "refresh_guard8",
+      "rescue_guard8"
+    ],
+    "fallback": "current_periodic",
+    "reference": "current_periodic",
+    "mask_fixed": true,
+    "bler_margin": 0.01,
+    "first_word_margin": 0.02,
+    "crossing_word_margin": 0.02,
+    "correct_retained_margin": 0.01,
+    "first_nb_margin": 0.02,
+    "minimum_mean_rf_saving": 0.5,
+    "rule": "Lowest mean RF calls among candidates passing EVERY frontend x condition x case against current_periodic. No extra CRC-accepted wrong words in any cell. Descriptive DEV tolerances, not formal noninferiority. No tuning after validation."
+  },
+  "rs": {
+    "n": 255,
+    "k": 159,
+    "application_bytes": 155,
+    "crc_bytes": 4,
+    "crc": "zlib CRC-32/ISO-HDLC big-endian",
+    "bitorder": "big",
+    "interleaver": false,
+    "perfect_framing": true,
+    "packet_phase": "Uniform 0..2039 symbols independently per stream; same for all methods"
+  },
+  "receiver": {
+    "block_ms": 5,
+    "refinement": "Per-block RMS >2*block median, restricted to legacy symbol flags; erase codeword byte iff >=2 flags; original byte grid",
+    "confirm8": "After changed action, confidence<0.75, or an armed change event, request the next two block-end decisions; every call charged",
+    "rule": "Persistent fast ALE; block energy-ratio gate >0.25; relative pulse masking; no classifier",
+    "state": "Reset only between independent streams; never at packets or jammer transitions",
+    "timing": "All outputs wait until the current 5 ms block ends. current policies may route that buffered block after observing it. lag controls apply the prior block decision. Neither reads later blocks."
+  },
+  "metrics": [
+    "payload_verified_bler",
+    "crc_rejections",
+    "crc_accepted_wrong",
+    "goodput_application_bits_per_all_transmitted_symbols",
+    "first_word_failure",
+    "transition_crossing_word_bler",
+    "first_nb_correct_retained",
+    "router_calls",
+    "ale_samples",
+    "assembly_plus_block_buffer_latency"
+  ],
+  "limitations": [
+    "Simulation, BPSK, ideal symbol/codeword synchronization; not a complete RF link",
+    "No hardware energy or deployment assertion",
+    "Block-median refinement buffers up to 5 ms; codewords need 20.4 ms assembly plus remaining block time",
+    "Feature and duplicate decoder work shared by harness; timing is not per-device energy",
+    "DEV tolerances are selection rules, not a formal noninferiority test",
+    "V3 observed panel excluded from selection and test; new namespace and training seeds",
+    "This is a new development pilot; v4 has been observed. New seed namespaces do not make the generator a new physical domain.",
+    "Risk thresholds chosen before local pilot; no data-driven threshold sweep.",
+    "ALE state updates during rescue are charged even if residual output is rejected.",
+    "Mixed-jammer and waveform diversity remain limited to this simulator."
+  ],
+  "policies": [
+    "lag_periodic",
+    "current_periodic",
+    "lag_guard8",
+    "current_guard8",
+    "refresh_guard8",
+    "rescue_guard8",
+    "rescue_periodic"
+  ],
+  "mask": "block_refine2",
+  "rescue": {
+    "power_ratio_trigger": 2.0,
+    "lag1_correlation_change_trigger": 0.2,
+    "startup_blocks": 2,
+    "hold_blocks": 2,
+    "residual_power_reduction_threshold": 0.25,
+    "fast_mu": 0.05,
+    "trigger_reference": "Immediately preceding received block; no labels, packet locations or CRC outcomes",
+    "action": "Risk window forces a current-block RF refresh in guard8 variants. rescue variants run the single persistent ALE fast, accepting its output iff rho > 0.25; otherwise raw block. State is retained even when output rejected. No parallel ALE branch."
+  }
+}

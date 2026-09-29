@@ -1,0 +1,23 @@
+/dts-v1/;
+/plugin/;
+/* Kria firmware overlay for the moe_top measurement design (default copy; vivado/build_bd.tcl rewrites it with the clock it constrained): loads moe.bit.bin through the
+   FPGA manager and sets PL clock 0 (zynqmp_clk 71 = pl0_ref) to 83331497 Hz = the 83.332 MHz the bitstream was constrained at.
+   The IP is reached via /dev/mem at 0xA000_0000 (M_AXI_HPM0_FPD, 128-bit -> AXI-Lite through SmartConnect); no driver node. */
+&fpga_full {
+    firmware-name = "moe.bit.bin";
+    resets = <&zynqmp_reset 116>, <&zynqmp_reset 117>, <&zynqmp_reset 118>, <&zynqmp_reset 119>;
+};
+&amba {
+    afi0: afi0 {
+        compatible = "xlnx,afi-fpga";
+        config-afi = <0 0>, <1 0>, <2 0>, <3 0>, <4 0>, <5 0>, <6 0>, <7 0>, <8 0>, <9 0>, <10 0>, <11 0>, <12 0>, <13 0>, <14 0xa00>, <15 0x000>;
+    };
+    clocking0: clocking0 {
+        #clock-cells = <0>;
+        assigned-clock-rates = <83331497>;
+        assigned-clocks = <&zynqmp_clk 71>;
+        clock-output-names = "fabric_clk";
+        clocks = <&zynqmp_clk 71>;
+        compatible = "xlnx,fclk";
+    };
+};

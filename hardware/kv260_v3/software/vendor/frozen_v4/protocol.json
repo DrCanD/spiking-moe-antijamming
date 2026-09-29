@@ -1,0 +1,186 @@
+{
+  "id": "UAV_Jamming_RS_CRC_Continuous_v4_20260925",
+  "seed_namespace": 925202605,
+  "profile_ids": {
+    "smoke": 20,
+    "development": 21,
+    "overnight": 22
+  },
+  "stage_ids": {
+    "training": 10,
+    "channel": 20,
+    "payload": 30
+  },
+  "conditions": [
+    "fixed",
+    "random"
+  ],
+  "frontends": [
+    "spike",
+    "analog_delta",
+    "analog_raw",
+    "delta",
+    "fft"
+  ],
+  "cases": [
+    {
+      "name": "clean",
+      "dwell_ms": 30,
+      "clean": true
+    },
+    {
+      "name": "nominal",
+      "dwell_ms": 30
+    },
+    {
+      "name": "short_dwell",
+      "dwell_ms": 15
+    },
+    {
+      "name": "low_snr",
+      "dwell_ms": 30,
+      "snr_db": 4
+    },
+    {
+      "name": "strong_pulse",
+      "dwell_ms": 30,
+      "pulse_relative_db": [
+        6
+      ]
+    },
+    {
+      "name": "long_dwell",
+      "dwell_ms": 60,
+      "dwell_jitter": 0.35
+    },
+    {
+      "name": "weak_pulse",
+      "dwell_ms": 30,
+      "pulse_relative_db": [
+        -6
+      ]
+    },
+    {
+      "name": "high_duty",
+      "dwell_ms": 30,
+      "pulse_duty_range": [
+        0.35,
+        0.5
+      ],
+      "fixed_pulse_duty": 0.425
+    }
+  ],
+  "profiles": {
+    "smoke": {
+      "model_seeds": [
+        401
+      ],
+      "trials": 1,
+      "cases": [
+        "clean",
+        "nominal"
+      ],
+      "train_streams_per_class": 3,
+      "trees": 20,
+      "chunk": 1
+    },
+    "development": {
+      "model_seeds": [
+        419,
+        431,
+        443
+      ],
+      "trials": 12,
+      "cases": [
+        "clean",
+        "nominal",
+        "short_dwell",
+        "low_snr",
+        "strong_pulse"
+      ],
+      "train_streams_per_class": 20,
+      "trees": 100,
+      "chunk": 2
+    },
+    "overnight": {
+      "model_seeds": [
+        461,
+        479,
+        499,
+        523,
+        541
+      ],
+      "trials": 40,
+      "cases": [
+        "clean",
+        "nominal",
+        "short_dwell",
+        "low_snr",
+        "strong_pulse",
+        "long_dwell",
+        "weak_pulse",
+        "high_duty"
+      ],
+      "train_streams_per_class": 20,
+      "trees": 100,
+      "chunk": 2
+    }
+  },
+  "masks": [
+    "legacy_any",
+    "block_refine2"
+  ],
+  "policy_candidates": [
+    "guard8",
+    "guard4",
+    "guard2",
+    "confirm8",
+    "periodic"
+  ],
+  "selection": {
+    "mask": "Minimum equal-cell mean periodic BLER over all frontends, conditions and DEV cases; each frontend/condition clean BLER <= legacy +0.01; stable list-order ties",
+    "policy": "Lowest mean RF calls satisfying all three bounds in EVERY frontend x condition x DEV case against guarded periodic with the selected mask. No averaging frontends for eligibility. Periodic is guaranteed fallback.",
+    "bler_margin": 0.01,
+    "correct_retained_margin": 0.01,
+    "first_nb_margin": 0.02,
+    "crc_undetected_rule": "No extra observed undetected CRC-accepted wrong deliveries versus matched periodic in any DEV cell"
+  },
+  "rs": {
+    "n": 255,
+    "k": 159,
+    "application_bytes": 155,
+    "crc_bytes": 4,
+    "crc": "zlib CRC-32/ISO-HDLC big-endian",
+    "bitorder": "big",
+    "interleaver": false,
+    "perfect_framing": true,
+    "packet_phase": "Uniform 0..2039 symbols independently per stream; same for all methods"
+  },
+  "receiver": {
+    "block_ms": 5,
+    "refinement": "Per-block RMS >2*block median, restricted to legacy symbol flags; erase codeword byte iff >=2 flags; original byte grid",
+    "confirm8": "After changed action, confidence<0.75, or an armed change event, request the next two block-end decisions; every call charged",
+    "rule": "Persistent fast ALE; block energy-ratio gate >0.25; relative pulse masking; no classifier",
+    "state": "Reset only between independent streams; never at packets or jammer transitions"
+  },
+  "metrics": [
+    "payload_verified_bler",
+    "crc_rejections",
+    "crc_accepted_wrong",
+    "goodput_application_bits_per_all_transmitted_symbols",
+    "first_word_failure",
+    "transition_crossing_word_bler",
+    "first_nb_correct_retained",
+    "router_calls",
+    "ale_samples",
+    "assembly_plus_block_buffer_latency"
+  ],
+  "limitations": [
+    "Simulation, BPSK, ideal symbol/codeword synchronization; not a complete RF link",
+    "No hardware energy or deployment assertion",
+    "Block-median refinement buffers up to 5 ms; codewords need 20.4 ms assembly plus remaining block time",
+    "Feature and duplicate decoder work shared by harness; timing is not per-device energy",
+    "DEV tolerances are selection rules, not a formal noninferiority test",
+    "V3 observed panel excluded from selection and test; new namespace and training seeds"
+  ]
+}

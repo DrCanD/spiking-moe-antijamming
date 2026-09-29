@@ -1,0 +1,67 @@
+{
+  "scope": "Activity and quality only; no hardware energy results",
+  "run_key": "c98fc69b",
+  "source_sha256": "19d9f5e588562efd28ce56e5dbdb7f383e0a54754f80c09e9c1cb477db0b4825",
+  "conditions": {
+    "fixed": {
+      "streams": 320,
+      "input_samples": 77200000,
+      "receivers": {
+        "spike9_refresh": {
+          "ale_samples": 47030000,
+          "ale_active_sample_fraction": 0.6091968911917098,
+          "ale_tap_product_ratio_to_rule_slow": 0.6028007749591632,
+          "words": 3464,
+          "failed_words": 136,
+          "bler": 0.03926096997690531
+        },
+        "rule_slow": {
+          "ale_samples": 77200000,
+          "ale_active_sample_fraction": 1.0,
+          "ale_tap_product_ratio_to_rule_slow": 1.0,
+          "words": 3464,
+          "failed_words": 198,
+          "bler": 0.05715935334872979
+        },
+        "rule_fast": {
+          "ale_samples": 77200000,
+          "ale_active_sample_fraction": 1.0,
+          "ale_tap_product_ratio_to_rule_slow": 1.0,
+          "words": 3464,
+          "failed_words": 248,
+          "bler": 0.07159353348729793
+        }
+      }
+    },
+    "random": {
+      "streams": 320,
+      "input_samples": 76460000,
+      "receivers": {
+        "spike9_refresh": {
+          "ale_samples": 43310000,
+          "ale_active_sample_fraction": 0.5664399686110384,
+          "ale_tap_product_ratio_to_rule_slow": 0.5612821425082588,
+          "words": 3425,
+          "failed_words": 393,
+          "bler": 0.11474452554744526
+        },
+        "rule_slow": {
+          "ale_samples": 76460000,
+          "ale_active_sample_fraction": 1.0,
+          "ale_tap_product_ratio_to_rule_slow": 1.0,
+          "words": 3425,
+          "failed_words": 351,
+          "bler": 0.10248175182481752
+        },
+        "rule_fast": {
+          "ale_samples": 76460000,
+          "ale_active_sample_fraction": 1.0,
+          "ale_tap_product_ratio_to_rule_slow": 1.0,
+          "words": 3425,
+          "failed_words": 383,
+          "bler": 0.11182481751824817
+        }
+      }
+    }
+  }
+}

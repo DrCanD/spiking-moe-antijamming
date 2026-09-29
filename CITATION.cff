@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: >-
+  If you use this research software, cite the associated manuscript and the
+  specific repository version used to generate your results.
+type: software
+title: Spiking Front End Mixture of Experts for Physics Aware Anti-Jamming
+authors:
+  - family-names: Dikmen
+    given-names: İsmail Can
+version: 0.1.0-review-draft
+abstract: >-
+  Synthetic baseband receiver simulations, frozen stream validation protocols,
+  KV260 state-bound resonator front end, and raw paired energy measurement audits.
