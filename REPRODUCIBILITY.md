@@ -27,7 +27,7 @@ This page records which frozen artifact supports each manuscript result. Results
 1. Choose the code and data license; none has been assigned on the author's behalf.
 2. Recover and review missing early experiment launchers and full v5 per-stream shards if a source-complete, record-complete public archive is intended. The present repo is explicit about that scope.
 3. Review notebook outputs and model weights for rights and size, and check the MATLAB/PPTX figure exports at final print size.
-4. Create a repository under the author's GitHub account, publish a specific immutable release/tag, and optionally archive it with a DOI. Verify the public URL before changing `\section*{Data and Code Availability}` in the manuscript.
+4. Review the existing private GitHub repository, publish a specific tagged release when ready, and archive that release with Zenodo for a DOI. Verify the public release URL and DOI before changing `\section*{Data and Code Availability}` in the manuscript.
 5. Link that version in the point-by-point reviewer response. State direct hardware block measurements separately from projections and simulation operation counts.
 
 ## Suggested manuscript statement after publication
@@ -39,4 +39,4 @@ Replace `<tagged repository URL>` only after the release is publicly reachable:
 The transmitted signals and interference are synthetically generated. The receiver simulations, frozen configurations and seeds, saved result summaries, KV260 source, and raw board-power records are available at \url{<tagged repository URL>}. The repository documents the separate frame, streaming, and hardware protocols and the scope of each reproducibility check.
 ```
 
-The present manuscript still uses its existing availability sentence. It should not assert an uncreated URL.
+The present manuscript still uses its existing availability sentence. The repository is private; cite a tagged public release once it exists.
