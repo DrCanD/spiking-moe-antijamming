@@ -1,6 +1,6 @@
 # Spiking Front End MoE for Physics Aware Anti-Jamming
 
-Code and results for **“Spiking-Front-End Mixture of Experts for Physics-Aware Anti-Jamming on a Baseband Digital Link”** (IEEE Transactions on Cognitive Communications and Networking, TCCN-TP-26-0433, under review).
+Code and results for **“Spiking-Front-End Mixture of Experts for Physics-Aware Anti-Jamming on a Baseband Digital Link.”**
 
 The receiver uses spike timing to route received baseband samples to mitigation methods matched to interference structure. It combines compound-interference recovery with selective computation and a measured FPGA front end.
 
@@ -55,6 +55,6 @@ The simulation is CPU-based. Development covers 720 streams; validation uses 1,2
 
 ## Hardware provenance
 
-The included v3 HLS source matches the recorded build digest `90e0039e5aaad84606f142049be6d337fe62a4f9ef597cfc5f363c82bd7c067f` in both board campaigns. Its original 437-file package passes `verify_package.py`. The paired raw-power analysis checks rate matching, idle/D0 references, five repeats per vector, and the reported confidence intervals directly from recorded samples.
+The included v3 HLS source matches the recorded build digest `90e0039e5aaad84606f142049be6d337fe62a4f9ef597cfc5f363c82bd7c067f` in both board campaigns. The 437-file package passes `verify_package.py`. The paired raw-power analysis checks rate matching, idle/D0 references, five repeats per vector, and the reported confidence intervals directly from recorded samples.
 
 See [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) for experimental details and the manuscript availability wording to use once a public release has a stable URL.

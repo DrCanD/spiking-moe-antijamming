@@ -1,4 +1,4 @@
-# KV260 hardware package — final-MoE datapath (TCCN-TP-26-0433 R1, Exp 5 hardware part)
+# KV260 hardware package — final-MoE datapath (Exp 5 hardware part)
 
 One Vitis HLS IP (`moe_top`) that carries the frozen final MoE datapath of Exp 6a in fixed point, **bit-exact
 with the Exp-5 golden models** (`spec.json` / `vectors/` on Drive), replicated `N_REPL` times behind a sample
@@ -119,9 +119,9 @@ vitis-run --mode hls --csim    --config hls_rf.cfg --work_dir rf_hls_work       
 v++ -c --mode hls              --config hls_rf.cfg --work_dir rf_hls_work        # ~2-4 min; check utilization in rf_hls_work\hls\syn\report\rf_top_csynth.rpt
 vitis-run --mode hls --package --config hls_rf.cfg --work_dir rf_hls_work
 cd ..\vivado ; vivado -mode batch -source build_bd_rf.tcl -log build_rf.log -journal build_rf.jou   # TIMING MET expected
-cd ..\board\firmware_rf ; .\make_firmware.bat ; scp rf.bit.bin pl.dtsi pl_clk_hz.txt rf.dtbo shell.json install_firmware.sh unload_firmware.sh ubuntu@192.168.10.2:~/moe/firmware_rf/
-scp ..\rf_ctl.py ..\verify_rf.py ..\measure_rf.py ..\parse_regmap.py ubuntu@192.168.10.2:~/moe/
-scp ..\..\hls_rf\rf_hls_work\hls\impl\ip\drivers\rf_top_v1_0\src\xrf_top_hw.h ubuntu@192.168.10.2:~/moe/
+cd ..\board\firmware_rf ; .\make_firmware.bat ; scp rf.bit.bin pl.dtsi pl_clk_hz.txt rf.dtbo shell.json install_firmware.sh unload_firmware.sh ubuntu@<board-ip>:~/moe/firmware_rf/
+scp ..\rf_ctl.py ..\verify_rf.py ..\measure_rf.py ..\parse_regmap.py ubuntu@<board-ip>:~/moe/
+scp ..\..\hls_rf\rf_hls_work\hls\impl\ip\drivers\rf_top_v1_0\src\xrf_top_hw.h ubuntu@<board-ip>:~/moe/
 ```
 On the board: `cd ~/moe/firmware_rf && sudo ./install_firmware.sh` (unloads the moe app, loads rf), `python3 parse_regmap.py
 xrf_top_hw.h regmap_rf.json`, `sudo python3 rf_ctl.py`, `sudo python3 verify_rf.py kv260_package/vectors --spec kv260_package/spec.json`,
