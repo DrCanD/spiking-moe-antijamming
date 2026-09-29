@@ -1,0 +1,24 @@
+{
+  "run_key": "d0faf822",
+  "units": 32,
+  "frames": 1700,
+  "means_reconstructed": 192,
+  "maximum_mean_difference": 0.0,
+  "empty_output_arm_frames": 450,
+  "empty_frames_recorded_as_half": 450,
+  "nonempty_arm_frames_recorded_as_half": 0,
+  "source_sha256": {
+    "summary.json": "35ad1faf3e796e705f06f3d4524033faea9b82c557191a4dedfa06492d9e9ee1",
+    "partial.json": "13c33c539b7c112dd912b5a215525ccfce2f0fb15154e704de32a1d229444373"
+  },
+  "original_repro_check_scope": "102 saved aggregate comparisons; not an independent per-sample rerun",
+  "limits": [
+    "No Exp 4b execution source snapshot found; exact source parity not independently verified.",
+    "Local reference notebook SHA differs from run reference; source inspection is lineage evidence only.",
+    "No oracle survival masks, bit positions or FEC decoder outputs in saved per-frame records.",
+    "Correct retained fraction is an uncoded accounting metric, not packet goodput or post-FEC success.",
+    "The conditional BER of empty-output frames is undefined; 0.5 is retained only as a legacy score.",
+    "Trial-block bootstrap preserves reference seed reuse across JSR; it does not cover RF training variability.",
+    "Zero-output passthrough is a post-hoc counterfactual from saved no-correction outputs, not a new validated receiver."
+  ]
+}

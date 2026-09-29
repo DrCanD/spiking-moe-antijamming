@@ -19,11 +19,12 @@ The energy measurement is a paired SOM-input-power contrast for selected blocks.
 
 | Directory | Contents |
 | --- | --- |
-| [`simulation/v5/`](simulation/v5/) | Frozen v4 core and v5 causal refresh/rescue experiment, including fixed configurations and source locks. |
-| [`simulation/frames/`](simulation/frames/) | Original receiver notebook, Exp 6a/6b frame programs, and original LSTM weights. |
-| [`analysis/exp4b/`](analysis/exp4b/) and [`analysis/exp9/`](analysis/exp9/) | Saved frame/stream records and scripts that recompute compound, BLER, and operation-count results. |
-| [`hardware/kv260_v3/`](hardware/kv260_v3/) | Identified KV260 HLS/Vivado source, fixed-point checks, vectors, board runner, and matched-campaign runner. |
-| [`evidence/hardware/`](evidence/hardware/) and [`analysis/hardware/`](analysis/hardware/) | Raw board-power archives, paired-energy audit, and exact result reproduction. |
+| [`simulation/streaming/`](simulation/streaming/) | Frozen v4 core and v5 causal refresh/rescue experiment, including fixed configurations and source locks. |
+| [`simulation/frame_receiver/`](simulation/frame_receiver/) | Original receiver notebook, Exp 6a/6b frame programs, and original LSTM weights. |
+| [`analysis/compound_interference/`](analysis/compound_interference/) and [`analysis/router_comparison/`](analysis/router_comparison/) | Saved frame/stream records and scripts that recompute compound, BLER, and operation-count results. |
+| [`hardware/kv260/`](hardware/kv260/) | Identified KV260 HLS/Vivado source, fixed-point checks, vectors, board runner, and matched-campaign runner. |
+| [`results/hardware/`](results/hardware/) and [`analysis/energy/`](analysis/energy/) | Raw board-power archives, paired-energy audit, and exact result reproduction. |
+| [`results/experiments/`](results/experiments/) and [`results/streaming/`](results/streaming/) | Recorded experiment summaries and frozen development/validation results. |
 | [`figures/`](figures/) | MATLAB plot source and data, plus editable architecture slides. |
 
 ## Reproduce the recorded comparisons
@@ -32,10 +33,10 @@ From the repository root, with Python 3.10+:
 
 ```bash
 python scripts/restore_assets.py
-python hardware/kv260_v3/verify_package.py
-python analysis/hardware/reproduce.py
-python analysis/exp9/audit_exp9.py --frozen-source analysis/exp9/frozen_source
-python analysis/exp4b/audit_exp4b.py
+python hardware/kv260/verify_package.py
+python analysis/energy/reproduce.py
+python analysis/router_comparison/audit_exp9.py --frozen-source analysis/router_comparison/frozen_source
+python analysis/compound_interference/audit_exp4b.py
 ```
 
 The hardware energy audit uses only the Python standard library. The Exp 4b/9 audits require NumPy. `REPRODUCIBILITY.md` maps each manuscript result to its source, saved evidence, and protocol.
@@ -43,7 +44,7 @@ The hardware energy audit uses only the Python standard library. The Exp 4b/9 au
 For a new v5 simulation run, use an isolated Python environment and the pinned requirements:
 
 ```bash
-cd simulation/v5
+cd simulation/streaming
 python -m pip install -r frozen_v4/requirements.txt
 python verify_v5.py --output ../../verification_local.json
 python run_v5.py --profile development --output ../../run_development --workers 2
@@ -51,7 +52,7 @@ python run_v5.py --profile validation --output ../../run_validation \
   --selection ../../run_development/selection.json --workers 2
 ```
 
-The simulation is CPU-based. Development covers 720 streams; validation uses 1,200 new streams and the locked development selection. The detailed protocol is in [`simulation/v5/README_TR.md`](simulation/v5/README_TR.md).
+The simulation is CPU-based. Development covers 720 streams; validation uses 1,200 new streams and the locked development selection. The detailed protocol is in [`simulation/streaming/README_TR.md`](simulation/streaming/README_TR.md).
 
 ## Hardware provenance
 

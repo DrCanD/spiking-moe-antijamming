@@ -1,0 +1,168 @@
+{
+  "exp9a": {
+    "run_key": "fe6e68c3",
+    "frames": 10500,
+    "cells": 120,
+    "means_verified": 1200,
+    "max_mean_difference": 0.0,
+    "ale_passes_equal_cell_average": 0.8166666666666667,
+    "ale_passes_actual_frame_average": 0.7904761904761904,
+    "reported_regime_verdict_counts": {
+      "no resolved difference": 8,
+      "router-free better": 5,
+      "router better": 7
+    },
+    "crosscheck_exp4b": {
+      "available": true,
+      "scalar_comparisons": 8500,
+      "max_abs_difference": 0.0,
+      "scope": "saved per-frame scalar outputs; not waveform or source-code equivalence"
+    }
+  },
+  "exp9b": {
+    "run_key": "c98fc69b",
+    "streams": 640,
+    "unique_waveform_hashes": 640,
+    "words_per_receiver": 6889,
+    "source_check": {
+      "available": true,
+      "matched": 15,
+      "total": 15,
+      "details": [
+        {
+          "file": "gates.py",
+          "expected": "45aa1595d600dbb064fb5c82f38c799ce92f90af6ad42fa1581fc00e1abb9503",
+          "observed": "45aa1595d600dbb064fb5c82f38c799ce92f90af6ad42fa1581fc00e1abb9503",
+          "match": true
+        },
+        {
+          "file": "run_experiment.py",
+          "expected": "851176c920bc61c1d6066c21cc9415b57d844560d51a23cefc5746f27ef7c164",
+          "observed": "851176c920bc61c1d6066c21cc9415b57d844560d51a23cefc5746f27ef7c164",
+          "match": true
+        },
+        {
+          "file": "vendor/common_v5.py",
+          "expected": "1d3905f2913724c240eb4e71e4498cb0aaf7369f74e368cb7c882d4c22bb6b0e",
+          "observed": "1d3905f2913724c240eb4e71e4498cb0aaf7369f74e368cb7c882d4c22bb6b0e",
+          "match": true
+        },
+        {
+          "file": "vendor/receiver_v5.py",
+          "expected": "f062285810baa573b912efe1b9884f3cb5da7acc0d8fc45d117d5572325004e1",
+          "observed": "f062285810baa573b912efe1b9884f3cb5da7acc0d8fc45d117d5572325004e1",
+          "match": true
+        },
+        {
+          "file": "vendor/protocol_v5.json",
+          "expected": "93a38b56c66809d39ff7f4e6ccbca1409d2c3088dba3c4a8cf76583285eca043",
+          "observed": "93a38b56c66809d39ff7f4e6ccbca1409d2c3088dba3c4a8cf76583285eca043",
+          "match": true
+        },
+        {
+          "file": "vendor/frozen_v4/core.py",
+          "expected": "d6ab2bc3063489c029c681a0d47d0c64af124b315f09028409a49d4f3d3476b3",
+          "observed": "d6ab2bc3063489c029c681a0d47d0c64af124b315f09028409a49d4f3d3476b3",
+          "match": true
+        },
+        {
+          "file": "vendor/frozen_v4/reference_core.py",
+          "expected": "b7396d0b09f3e93207dfed946f09c0b21f72c67ee08d719a8e29cae14f8d1635",
+          "observed": "b7396d0b09f3e93207dfed946f09c0b21f72c67ee08d719a8e29cae14f8d1635",
+          "match": true
+        },
+        {
+          "file": "vendor/frozen_v4/receiver_v4.py",
+          "expected": "e953202a633d7054d884279befa41b152082707ea1842339067fe671bbdf61ce",
+          "observed": "e953202a633d7054d884279befa41b152082707ea1842339067fe671bbdf61ce",
+          "match": true
+        },
+        {
+          "file": "vendor/frozen_v4/streaming_v3.py",
+          "expected": "967de316ee45e88f9930b356369ffed732d5cae23e22ec32553d93a3d2f38412",
+          "observed": "967de316ee45e88f9930b356369ffed732d5cae23e22ec32553d93a3d2f38412",
+          "match": true
+        },
+        {
+          "file": "vendor/frozen_v4/link_v4.py",
+          "expected": "b692de0b85b90de0baf55ff44c4d6924af31171e47a54979491395eeb3fe0e29",
+          "observed": "b692de0b85b90de0baf55ff44c4d6924af31171e47a54979491395eeb3fe0e29",
+          "match": true
+        },
+        {
+          "file": "vendor/frozen_v4/generator_v4.py",
+          "expected": "ea20f16a784028605f56aaf147a09c1335a084d78f1110db7b138e6e43e67c12",
+          "observed": "ea20f16a784028605f56aaf147a09c1335a084d78f1110db7b138e6e43e67c12",
+          "match": true
+        },
+        {
+          "file": "vendor/frozen_v4/run_v4.py",
+          "expected": "badccf80bfa9aa021ce0b5817f390e9bf14fa96ecf8134887b639495356cd0e9",
+          "observed": "badccf80bfa9aa021ce0b5817f390e9bf14fa96ecf8134887b639495356cd0e9",
+          "match": true
+        },
+        {
+          "file": "vendor/frozen_v4/coding.py",
+          "expected": "b4a07fa573e2cd1a2d6bd9ac40de403d95048738220fdd014aedc4705e23d25e",
+          "observed": "b4a07fa573e2cd1a2d6bd9ac40de403d95048738220fdd014aedc4705e23d25e",
+          "match": true
+        },
+        {
+          "file": "vendor/frozen_v4/requirements.txt",
+          "expected": "a95b282b88ad163d5f207bb5a3376452b7c655160bd92062771c30b6367d4b66",
+          "observed": "a95b282b88ad163d5f207bb5a3376452b7c655160bd92062771c30b6367d4b66",
+          "match": true
+        },
+        {
+          "file": "vendor/frozen_v4/protocol.json",
+          "expected": "60b60086a27538482f99f06f0329b5aee21317c4ab6ee4f0abbbead8054f7e84",
+          "observed": "60b60086a27538482f99f06f0329b5aee21317c4ab6ee4f0abbbead8054f7e84",
+          "match": true
+        }
+      ]
+    },
+    "seed_cluster_ci": [
+      {
+        "condition": "fixed",
+        "rule_minus_snn_pp": 1.789838337182448,
+        "ci95_lo": 0.8080808080808081,
+        "ci95_hi": 2.7834154827486226,
+        "clusters": 5,
+        "resampling_sequences": 3125,
+        "status": "exploratory_seed_cluster_bootstrap_selected_baseline_not_confirmatory"
+      },
+      {
+        "condition": "random",
+        "rule_minus_snn_pp": -1.2262773722627738,
+        "ci95_lo": -2.1208599651365487,
+        "ci95_hi": -0.3810082063305979,
+        "clusters": 5,
+        "resampling_sequences": 3125,
+        "status": "exploratory_seed_cluster_bootstrap_selected_baseline_not_confirmatory"
+      },
+      {
+        "condition": "pooled",
+        "rule_minus_snn_pp": 0.2903178980984178,
+        "ci95_lo": -0.5053421888535952,
+        "ci95_hi": 1.0198135198135199,
+        "clusters": 5,
+        "resampling_sequences": 3125,
+        "status": "exploratory_seed_cluster_bootstrap_selected_baseline_not_confirmatory"
+      }
+    ]
+  },
+  "files_sha256": {
+    "exp9a_partial.json": "8c8e2a633a4a77420605fa714795e4b335154df9ba4b3a802e9f3a863fc3432b",
+    "exp9a_summary.json": "b438372fabe02911885ed90b55be783a449af20031c9702337d361e103a40838",
+    "exp9b_results.json": "19d9f5e588562efd28ce56e5dbdb7f383e0a54754f80c09e9c1cb477db0b4825",
+    "exp9b_summary.json": "4cd35a60d1ce6d3c5b965c4fb0108c1fd4dc91cdc41027d367204396659a9d54"
+  },
+  "limitations": [
+    "This analysis does not rerun signal processing or decoding.",
+    "Global baselines were chosen using these evaluation panels; full alternatives retained.",
+    "Frame-mode BER/retention and streaming coded-word BLER describe different protocols.",
+    "Tap products and full-frame pass counts exclude front-end/router/masking/decoder energy.",
+    "Five model-seed blocks give an exploratory interval, not a comprehensive training-variance study.",
+    "Exact Exp 9a/9b wrapper source snapshots were not retrieved; 9b frozen dependency hashes were verified."
+  ]
+}
