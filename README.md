@@ -1,6 +1,6 @@
 # Spiking Front End MoE for Physics-Aware Anti-Jamming
 
-Receiver simulations, frozen configurations, FPGA sources and measured results for **“Spiking-Front-End Mixture of Experts for Physics-Aware Anti-Jamming on a Baseband Digital Link.”** All transmitted signals and interference are synthetically generated.
+Receiver simulations, frozen configurations, FPGA sources and measured results for **“Spiking-Front-End Mixture of Experts for Physics-Aware Anti-Jamming on a Baseband Digital Link.”** 
 
 The receiver uses spike timing to identify interference structure, selects the appropriate mitigation path, and preserves useful samples under compound interference. Causal refresh routing reduces classifier and adaptive-filter work. The KV260 implementation verifies the state-bound resonator gate and measures its energy advantage against an FFT front end.
 
