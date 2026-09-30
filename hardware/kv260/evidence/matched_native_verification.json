@@ -6,8 +6,8 @@
   "source_digest": "90e0039e5aaad84606f142049be6d337fe62a4f9ef597cfc5f363c82bd7c067f",
   "hls_source_modified": false,
   "testbench": "hls/tb/tb_matched.cpp",
-  "testbench_sha256": "c65a90c428ad740a6345674e3d41fb40587dea7ba8b4a02cfcb135c1ce6fdd3c",
-  "independent_golden": "tools/fxgolden_v1.py (v1 package fx_ale, fx_blanker_mask)",
+  "testbench_sha256": "b193ecca36ed2a5b0da9dd5dc76f27f9691bfa60da68f976b689e986b54627f0",
+  "independent_golden": "tools/fixed_experts.py",
   "independent_golden_sha256": "9a38fbf1c12835e09661ff7669a45253f53b95119c913c917c4cdf0e24a40c84",
   "native_cpp_equals_python_golden": true,
   "combinations_checked": [

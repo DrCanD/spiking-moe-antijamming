@@ -1,0 +1,120 @@
+{
+  "smoke": false,
+  "conditions": [
+    "fixed",
+    "random"
+  ],
+  "jsr_list": [
+    0,
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18,
+    20
+  ],
+  "n_trials": 100,
+  "n_clean_trials": 100,
+  "n_sym_test": 10000,
+  "snr_db": 10.0,
+  "seed_base": 11000,
+  "clean_seed_base": 30000,
+  "lstm_hidden": 24,
+  "lstm_seq_len": 200,
+  "lstm_lr": 0.002,
+  "lstm_epochs": 200,
+  "lstm_batch": 128,
+  "train_jsr_list": [
+    0,
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18,
+    20
+  ],
+  "train_n_per_jsr": 8,
+  "mono_n_per_jsr": 4,
+  "train_seed_base": 40000,
+  "mono_seed_base": 50000,
+  "train_n_sym": 10000,
+  "paper_train_jsr": [
+    4,
+    8,
+    12,
+    16
+  ],
+  "paper_train_n_per_jsr": 10,
+  "paper_train_seed_base": 4000,
+  "ale_taps": 32,
+  "ale_delay": 20,
+  "ale_mu": 0.2,
+  "gate_thresholds": [
+    8.0,
+    10.0,
+    12.0
+  ],
+  "gate_default": 10.0,
+  "conf_threshold": 0.5,
+  "blanker_z": 3.0,
+  "blanker_group": 5,
+  "blanker_cal_seed_base": 600,
+  "blanker_cal_n": 30,
+  "blanker_cal_samples": 10000,
+  "router_train_jsr": [
+    0,
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18,
+    20
+  ],
+  "router_n_train_clean": 50,
+  "router_n_train_per": 5,
+  "router_seed_base": 60000,
+  "router_theta": 2.0,
+  "enc_refractory": 2,
+  "rf_bands": 16,
+  "rf_f_lo_hz": 25000.0,
+  "rf_f_hi_hz": 475000.0,
+  "rf_tau": 15.0,
+  "rf_th": 0.12,
+  "n_subframes": 20,
+  "rf_trees": 100,
+  "rf_depth": 10,
+  "rf_seed": 42,
+  "nb_f_range": [
+    0.05,
+    0.95
+  ],
+  "sweep_f_range": [
+    0.05,
+    0.95
+  ],
+  "sweep_dur_range": [
+    0.5,
+    2.0
+  ],
+  "pulse_duty_range": [
+    0.1,
+    0.4
+  ],
+  "pulse_period_range": [
+    300,
+    800
+  ],
+  "n_jobs": -1
+}

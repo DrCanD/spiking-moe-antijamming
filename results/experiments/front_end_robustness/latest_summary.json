@@ -170,7 +170,7 @@
     "recommended_runtime": "CPU or T4 (no training; numpy + sklearn only)"
   },
   "reference": {
-    "notebook": "simulation/frame_receiver/SNN_MoE_COMPLETE.ipynb",
+    "notebook": "simulation/frame_receiver/reference_receiver.py",
     "sha256_16": "20916f2bbe1be5e4",
     "phase1_watchdog": "n_neurons=64, anomaly_z=2.5, tau_m=8.0, n_subframes=20",
     "phase1_encoder": "threshold=0.04, refractory=2",

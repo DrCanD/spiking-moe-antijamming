@@ -3,7 +3,7 @@
 #   1. C simulation  : the testbench replays the vectors through the IP and checks every stream bit for bit
 #   2. C synthesis   : 100 MHz, xck26 (KV260 SOM)
 #   3. export        : IP catalog ZIP for the Vivado block design
-# Set VECTORS to the directory with the Exp-5 vectors (Drive: Research/SNN_MoE_AntiJamming_R1/kv260_package/vectors)
+# Set VECTORS to the directory with the Exp-5 vectors
 # after running  python3 golden/convert_expected.py <that dir>  once.
 cd [file dirname [file normalize [info script]]]
 set VECTORS "../vectors";  if {[info exists ::env(MOE_VECTORS)]}  { set VECTORS $::env(MOE_VECTORS) }

@@ -55,14 +55,14 @@ for tag,archive,analysis in [('matched','KV260_MATCHED_RESULTS.zip','analysis_ma
     v['additivity'][combo]={'interaction':interaction,'relative_mean':interaction['mean']/parts,'within_10pct_band':interaction['ci95'][0]>=-.1*parts and interaction['ci95'][1]<=.1*parts}
   result['vectors'][name]=v
  out['campaigns'][tag]=result
- out['archives'][archive]=sha(ROOT.parent/'upload'/archive)
+ out['archives'][archive]=sha(ROOT.parent/'records'/archive)
  # Validate recorded board evidence and immutable build provenance.
  for fn in ['board_verification.json']+(['board_matched_verification.json'] if tag=='matched' else []):
   b=json.loads((source/fn).read_text());assert b['completed'] and all(c['passed'] for c in b['checks'])
   result[fn]={'passed':len(b['checks']),'vectors':b['vectors'],'sha256':sha(source/fn)}
 for p in ['provenance/build_identity.json','provenance/board/build_receipt.json']:
  assert (ROOT/'matched'/p).read_bytes()==(ROOT/'gate'/p).read_bytes()
-activity=json.loads((ROOT.parent/'matched_preparation_20260928/exp9b_activity_for_energy.json').read_text())
+activity=json.loads((ROOT.parent/'streaming_activity.json').read_text())
 pooled_samples=sum(x['input_samples'] for x in activity['conditions'].values())
 pooled_active=sum(x['receivers']['spike9_refresh']['ale_samples'] for x in activity['conditions'].values())
 pooled_duty=pooled_active/pooled_samples

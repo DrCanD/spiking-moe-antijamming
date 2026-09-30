@@ -152,10 +152,10 @@
     ]
   },
   "files_sha256": {
-    "exp9a_partial.json": "8c8e2a633a4a77420605fa714795e4b335154df9ba4b3a802e9f3a863fc3432b",
-    "exp9a_summary.json": "b438372fabe02911885ed90b55be783a449af20031c9702337d361e103a40838",
-    "exp9b_results.json": "19d9f5e588562efd28ce56e5dbdb7f383e0a54754f80c09e9c1cb477db0b4825",
-    "exp9b_summary.json": "4cd35a60d1ce6d3c5b965c4fb0108c1fd4dc91cdc41027d367204396659a9d54"
+    "frame_records.json": "8c8e2a633a4a77420605fa714795e4b335154df9ba4b3a802e9f3a863fc3432b",
+    "frame_summary.json": "2f4ec01585c90e98426db6ccc070b826d9a4a79d50328cd59acb8ff0190b182f",
+    "stream_records.json": "19d9f5e588562efd28ce56e5dbdb7f383e0a54754f80c09e9c1cb477db0b4825",
+    "stream_summary.json": "4cd35a60d1ce6d3c5b965c4fb0108c1fd4dc91cdc41027d367204396659a9d54"
   },
   "limitations": [
     "This analysis does not rerun signal processing or decoding.",

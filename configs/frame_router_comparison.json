@@ -1,0 +1,117 @@
+{
+  "smoke": false,
+  "conditions": [
+    "fixed",
+    "random"
+  ],
+  "jsr_list": [
+    0,
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18,
+    20
+  ],
+  "compounds": [
+    [
+      "narrowband",
+      "pulse"
+    ],
+    [
+      "sweep",
+      "pulse"
+    ],
+    [
+      "broadband",
+      "narrowband"
+    ],
+    [
+      "narrowband",
+      "sweep"
+    ],
+    [
+      "broadband",
+      "pulse"
+    ]
+  ],
+  "compound_jsr_list": [
+    6,
+    10,
+    14
+  ],
+  "n_trials": 100,
+  "n_compound_trials": 50,
+  "n_clean_trials": 100,
+  "rho_min": 0.25,
+  "blank_min_fraction": 0.01,
+  "blank_max_fraction": 0.6,
+  "pulse_k": 2.0,
+  "n_sym_test": 10000,
+  "snr_db": 10.0,
+  "seed_base": 11000,
+  "clean_seed_base": 30000,
+  "ale_taps": 128,
+  "ale_delay": 20,
+  "ale_mu_nb": 0.02,
+  "ale_mu_sw": 0.05,
+  "blanker_z": 3.0,
+  "blanker_group": 5,
+  "blanker_cal_seed_base": 600,
+  "blanker_cal_n": 30,
+  "blanker_cal_samples": 10000,
+  "router_train_jsr": [
+    0,
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18,
+    20
+  ],
+  "router_n_train_clean": 50,
+  "router_n_train_per": 5,
+  "router_seed_base": 60000,
+  "router_theta": 2.0,
+  "enc_refractory": 2,
+  "rf_bands": 16,
+  "rf_f_lo_hz": 25000.0,
+  "rf_f_hi_hz": 475000.0,
+  "rf_tau": 15.0,
+  "rf_th": 0.12,
+  "n_subframes": 20,
+  "rf_trees": 100,
+  "rf_depth": 10,
+  "rf_seed": 42,
+  "nb_f_range": [
+    0.05,
+    0.95
+  ],
+  "sweep_f_range": [
+    0.05,
+    0.95
+  ],
+  "sweep_dur_range": [
+    0.5,
+    2.0
+  ],
+  "pulse_duty_range": [
+    0.1,
+    0.4
+  ],
+  "pulse_period_range": [
+    300,
+    800
+  ],
+  "n_boot": 2000,
+  "boot_seed": 9001,
+  "n_jobs": -1
+}

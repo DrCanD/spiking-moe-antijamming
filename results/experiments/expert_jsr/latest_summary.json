@@ -205,7 +205,7 @@
     "recommended_runtime": "GPU (T4 is enough); LSTM retraining ~2 min each, BER sweep ~10-15 min"
   },
   "reference": {
-    "notebook": "simulation/frame_receiver/SNN_MoE_COMPLETE.ipynb",
+    "notebook": "simulation/frame_receiver/reference_receiver.py",
     "sha256_16": "acc1064729b59e91",
     "imports_skipped": [
       "from reedsolo import RSCodec, ReedSolomonError  (ModuleNotFoundError)",

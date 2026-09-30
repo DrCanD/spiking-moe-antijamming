@@ -7,10 +7,7 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 ARCHIVE = ROOT / "assets" / "binary-evidence.zip"
 MANIFEST = ROOT / "MANIFEST_SHA256.txt"
-ARCHIVE_PREFIXES = {
-    "hardware/kv260_v3/": "hardware/kv260/",
-    "simulation/frames/": "simulation/frame_receiver/",
-}
+ARCHIVE_PREFIXES = {}
 
 
 def main():

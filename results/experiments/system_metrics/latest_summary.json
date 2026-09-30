@@ -254,7 +254,7 @@
     "recommended_runtime": "GPU (T4 is enough); ~25-35 min (router features on 100k-sample frames dominate)"
   },
   "reference": {
-    "notebook": "simulation/frame_receiver/SNN_MoE_COMPLETE.ipynb",
+    "notebook": "simulation/frame_receiver/reference_receiver.py",
     "sha256_16": "7601c584f5c4ad65",
     "imports_skipped": []
   },

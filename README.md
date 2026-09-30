@@ -1,65 +1,101 @@
-# Spiking Front End MoE for Physics Aware Anti-Jamming
+# Spiking Front End MoE for Physics-Aware Anti-Jamming
 
-Code and results for **“Spiking-Front-End Mixture of Experts for Physics-Aware Anti-Jamming on a Baseband Digital Link”**.
+Receiver simulations, frozen configurations, FPGA sources and measured results for **“Spiking-Front-End Mixture of Experts for Physics-Aware Anti-Jamming on a Baseband Digital Link.”** All transmitted signals and interference are synthetically generated.
 
-The receiver uses spike timing to route received baseband samples to mitigation methods matched to interference structure. It combines compound-interference recovery with selective computation and a measured FPGA front end.
+The receiver uses spike timing to identify interference structure, selects the appropriate mitigation path, and preserves useful samples under compound interference. Causal refresh routing reduces classifier and adaptive-filter work. The KV260 implementation verifies the state-bound resonator gate and measures its energy advantage against an FFT front end.
 
 ## Main results
 
 | Result | Observation |
 | --- | --- |
-| Compound interference | The spike-routed receiver retains **68.7–69.4% of input bits** in randomized tone-plus-pulse and sweep-plus-pulse mixtures, while the tested conventional-feature cascade erases almost all samples. |
-| Streaming workload | Across **640 streams**, refresh routing uses **39.7–43.9% fewer ALE operations** than the selected router-free rule. Pooled BLER is **7.68% versus 7.97%**. |
-| Classifier calls | A frozen, independent **1,200-stream validation** cuts classifier calls by **62.9%** while satisfying every prespecified descriptive quality cell. |
-| KV260 energy | On a common bitstream and matched replay rate, gated front end plus continuously active ALE uses **9.7–22.9% less measured incremental energy** than FFT-1024 plus the same ALE. Measured block costs combined with streaming activity give a **23–38% datapath energy estimate**. |
+| Useful-data retention | **68.7–69.4% of input bits retained** in randomized tone-plus-pulse and sweep-plus-pulse mixtures; the tested conventional-feature cascade erases almost all samples. |
+| Adaptive-filter workload | **39.7–43.9% fewer ALE operations** over **640 streams**, with pooled BLER **7.68% versus 7.97%** for the selected router-free rule. |
+| Classifier activity | **62.9% fewer classifier calls** in frozen **1,200-stream validation**, satisfying every prespecified descriptive quality cell. |
+| Measured energy | **9.7–22.9% lower incremental energy** for the gated front end plus continuously active ALE, compared with FFT-1024 plus the same ALE on the same bitstream at a matched replay rate. |
+| Receiver datapath estimate | **23–38% lower energy**, combining measured block costs with streaming activity. |
 
-The energy measurement is a paired SOM-input-power contrast for selected blocks. The activity-weighted receiver estimate is reported separately from that direct measurement.
+## Layout
 
-## Repository contents
-
-| Directory | Contents |
+| Directory | Purpose |
 | --- | --- |
-| [`simulation/streaming/`](simulation/streaming/) | Frozen v4 core and v5 causal refresh/rescue experiment, including fixed configurations and source locks. |
-| [`simulation/frame_receiver/`](simulation/frame_receiver/) | Original receiver notebook, Exp 6a/6b frame programs, and original LSTM weights. |
-| [`analysis/compound_interference/`](analysis/compound_interference/) and [`analysis/router_comparison/`](analysis/router_comparison/) | Saved frame/stream records and scripts that recompute compound, BLER, and operation-count results. |
-| [`hardware/kv260/`](hardware/kv260/) | Identified KV260 HLS/Vivado source, fixed-point checks, vectors, board runner, and matched-campaign runner. |
-| [`results/hardware/`](results/hardware/) and [`analysis/energy/`](analysis/energy/) | Raw board-power archives, paired-energy audit, and exact result reproduction. |
-| [`results/experiments/`](results/experiments/) and [`results/streaming/`](results/streaming/) | Recorded experiment summaries and frozen development/validation results. |
-| [`figures/`](figures/) | MATLAB plot source and data, plus editable architecture slides. |
+| [`simulation/front_end/`](simulation/front_end/) | Neuron-count, robustness and representation ablations. |
+| [`simulation/frame_receiver/`](simulation/frame_receiver/) | Expert, routing, compound-interference and system comparisons; original receiver definitions and LSTM weights. |
+| [`simulation/streaming/`](simulation/streaming/) | Causal receiver, frozen refresh validation, band-count and matched-feature comparisons. |
+| [`configs/`](configs/) | Recorded parameter grids and random-seed settings. |
+| [`hardware/kv260/`](hardware/kv260/) | Gate HLS/Vivado source, fixed-point checks, expected captures and board measurement runners. |
+| [`hardware/kv260/classifier_tail/`](hardware/kv260/classifier_tail/) | Feature-finalisation and Random Forest hardware, both frozen forests, native tests and classifier power protocol. |
+| [`analysis/`](analysis/) | Frame/stream record audits and raw-energy reproduction. |
+| [`results/`](results/) | Recorded simulation summaries and raw hardware-power evidence. |
+| [`figures/`](figures/) | PDF figures and editable architecture slides. |
 
-## Colab single cell
+## Setup
 
-Copy [`colab/streaming_single_cell.py`](colab/streaming_single_cell.py) into one Colab cell. It checks out the frozen experiment commit, restores the evidence, installs the pinned CPU dependencies in an isolated environment, and runs verification, development, or full development/validation according to `MODE`. Set `OUTPUT_ROOT` to a persistent output directory before a long run.
-
-## Reproduce the recorded comparisons
-
-From the repository root, with Python 3.10+:
+Run commands from the repository root using Python 3.12. Simulation uses the CPU; PyTorch can use a GPU for LSTM training.
 
 ```bash
+python -m venv .venv
+```
+
+Activate the environment with `.\.venv\Scripts\Activate.ps1` in PowerShell or `source .venv/bin/activate` in Bash, then:
+
+```bash
+python -m pip install -r requirements.txt
 python scripts/restore_assets.py
-python hardware/kv260/verify_package.py
-python analysis/energy/reproduce.py
-python analysis/router_comparison/audit_exp9.py --frozen-source analysis/router_comparison/frozen_source
-python analysis/compound_interference/audit_exp4b.py
 ```
 
-The hardware energy audit uses only the Python standard library. The Exp 4b/9 audits require NumPy. `REPRODUCIBILITY.md` maps each manuscript result to its source, saved evidence, and protocol.
+For streaming alone, use `simulation/streaming/frozen_v4/requirements.txt`.
 
-For a new v5 simulation run, use an isolated Python environment and the pinned requirements:
+## Run simulations
+
+| Study | Command |
+| --- | --- |
+| Neuron count | `python simulation/front_end/run_ablation.py --study neuron_count` |
+| Front-end robustness | `python simulation/front_end/run_ablation.py --study robustness` |
+| Representation comparison | `python simulation/front_end/run_ablation.py --study representation` |
+| LSTM and adaptive experts | `python simulation/frame_receiver/run_expert_comparison.py` |
+| Final frame receiver | `python simulation/frame_receiver/run_receiver_comparison.py --config configs/receiver_comparison.json` |
+| Earlier routing baselines | `python simulation/frame_receiver/run_routing_baselines.py --config configs/routing_baselines.json --output runs/routing_baselines` |
+| ALE-128 routing ablation | `python simulation/frame_receiver/run_routing_baselines.py --config configs/routing_ale128.json --output runs/routing_ale128` |
+| Compound recovery | `python simulation/frame_receiver/run_router_comparison.py --study compound --output runs/compound_recovery` |
+| Frame router-free comparison | `python simulation/frame_receiver/run_router_comparison.py` |
+| Switching, fading, retention and coded link | `python simulation/frame_receiver/run_system_metrics.py --config configs/system_metrics.json` |
+| Stream router-free comparison | `python simulation/streaming/run_comparison.py --study router` |
+| Resonator-band count | `python simulation/streaming/run_comparison.py --study bands` |
+| Matched feature dimensions | `python simulation/streaming/run_comparison.py --study features` |
+| Common-workload front ends | `python analysis/energy/run_front_end_comparison.py` |
+
+Add `--smoke` for a short wiring check. Set `--output runs/<study>` for a separate result directory. Saved models, trial records and protocol locks support continuation where implemented.
+
+The frozen development/validation experiment has its own source and protocol locks:
 
 ```bash
-cd simulation/streaming
-python -m pip install -r frozen_v4/requirements.txt
-python verify_v5.py --output ../../verification_local.json
-python run_v5.py --profile development --output ../../run_development --workers 2
-python run_v5.py --profile validation --output ../../run_validation \
-  --selection ../../run_development/selection.json --workers 2
+python simulation/streaming/verify_v5.py --output runs/verification.json
+python simulation/streaming/run_v5.py --profile development --output runs/development --workers 2
+python simulation/streaming/run_v5.py --profile validation --output runs/validation --selection runs/development/selection.json --workers 2
 ```
 
-The simulation is CPU-based. Development covers 720 streams; validation uses 1,200 new streams and the locked development selection. The detailed protocol is in [`simulation/streaming/README_TR.md`](simulation/streaming/README_TR.md).
+Development covers **720 streams**. Validation uses **1,200 new streams** with the locked development selection.
 
-## Hardware provenance
+## Reproduce recorded results
 
-The included v3 HLS source matches the recorded build digest `90e0039e5aaad84606f142049be6d337fe62a4f9ef597cfc5f363c82bd7c067f` in both board campaigns. The 437-file package passes `verify_package.py`. The paired raw-power analysis checks rate matching, idle/D0 references, five repeats per vector, and the reported confidence intervals directly from recorded samples.
+```bash
+python hardware/kv260/verify_package.py
+python analysis/router_comparison/audit_records.py --frozen-source analysis/router_comparison/frozen_source
+python analysis/compound_interference/audit_records.py
+python analysis/energy/reproduce.py
+python analysis/energy/classifier_tail.py
+```
 
-See [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) for experimental details and the manuscript availability wording to use once a public release has a stable URL.
+The raw-energy audit checks sensor means, rate matching, idle brackets, D0 subtraction and paired confidence intervals. Direct block measurements and the activity-weighted receiver estimate retain their distinct accounting scopes.
+
+## FPGA verification and measurement
+
+```bash
+python hardware/kv260/prepare_matched_vectors.py
+python hardware/kv260/classifier_tail/build_classifier.py --native-only
+python hardware/kv260/build_kv260.py --jobs 4
+```
+
+Matched-vector regeneration reproduces **all 78 recorded captures byte for byte**. Classifier native verification checks **44 frames**, all nine features and both forests over all twenty subframe rotations. New synthesis requires AMD Vitis/Vivado 2025.2; new power measurements require a KV260. Board runners are [`run_gate.py`](hardware/kv260/board/run_gate.py), [`run_matched.py`](hardware/kv260/board/run_matched.py) and [`measure_classifier.py`](hardware/kv260/classifier_tail/board/measure_classifier.py).
+
+See [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) for source/evidence mapping. Code is distributed under the **[MIT license](LICENSE)**.

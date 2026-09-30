@@ -1,7 +1,7 @@
 """Recompute the measured KV260 contrasts from the archived raw power samples.
 
-Requires Python 3.10+ and only the standard library. The original audit code is
-run unchanged inside a temporary directory with its original relative layout.
+Requires Python 3.10+ and only the standard library. The recorded numerical audit is
+run inside a temporary directory with its original relative layout.
 """
 
 from pathlib import Path
@@ -29,7 +29,7 @@ def safe_extract(archive: Path, destination: Path):
 def main():
     with tempfile.TemporaryDirectory(prefix="kv260_raw_audit_") as directory:
         temp = Path(directory)
-        audit = temp / "kv260_matched_review_20260929"
+        audit = temp / "audit"
         audit.mkdir()
         shutil.copyfile(HERE / "audit_matched_results.py", audit / "audit_matched_results.py")
         for name, subdir in (("KV260_MATCHED_RESULTS.zip", "matched"), ("KV260_GATE_RESULTS.zip", "gate")):
@@ -37,12 +37,12 @@ def main():
             target = audit / subdir
             target.mkdir()
             safe_extract(archive, target)
-            original = temp / "upload" / name
+            original = temp / "records" / name
             original.parent.mkdir(exist_ok=True)
             shutil.copyfile(archive, original)
-        activity = temp / "matched_preparation_20260928" / "exp9b_activity_for_energy.json"
-        activity.parent.mkdir()
-        shutil.copyfile(HERE / "exp9b_activity_for_energy.json", activity)
+        activity = temp / "streaming_activity.json"
+        activity.parent.mkdir(exist_ok=True)
+        shutil.copyfile(HERE / "streaming_activity.json", activity)
         (audit / "audited").mkdir()
         subprocess.run([sys.executable, str(audit / "audit_matched_results.py")], check=True)
         outputs = ("independent_raw_audit.json", "measured_joint_energy.csv")

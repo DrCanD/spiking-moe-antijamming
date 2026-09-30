@@ -216,7 +216,7 @@
     "numba": true
   },
   "reference": {
-    "notebook": "simulation/frame_receiver/SNN_MoE_COMPLETE.ipynb",
+    "notebook": "simulation/frame_receiver/reference_receiver.py",
     "sha256_16": "82832d02a8e1db00",
     "imports_skipped": [
       "from reedsolo import RSCodec, ReedSolomonError  (ModuleNotFoundError)",

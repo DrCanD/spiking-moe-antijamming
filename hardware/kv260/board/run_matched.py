@@ -4,7 +4,7 @@
 Same hardware, same regmap, same INA260 protocol as run_gate.py (120 s blocks, idle bracket before and after every
 run, randomised mode order, >= 5 repeats, rate matched within 1 %). New here:
   * board verification of the blocks the v3 run never checked: ALE_NB, ALE_SW, blanker (bit-exact against the
-    expected files of prepare_matched.py) and the two measured combinations FE_v3+ALE_NB, FFT1024+ALE_NB;
+    expected files of prepare_matched_vectors.py) and the two measured combinations FE_v3+ALE_NB, FFT1024+ALE_NB;
   * --probe: maximum replay rate of every mode at pace 0, and the common target that all modes can hold;
   * measured modes D0_empty, FE_v3, FFT1024, ALE_NB, ALE_SW, BLANK, FE_v3+ALE_NB, FFT1024+ALE_NB;
   * additivity test: E(FE_v3+ALE_NB) - E(FE_v3) - E(ALE_NB) (D0-subtracted, paired per repeat); same for FFT.
@@ -69,7 +69,7 @@ def verify_matched(m, identity, items, out):
         load = lambda kind, dt: np.fromfile(f'{stem}_{kind}.bin', dtype=dt)
         g.require(g.sha(f'{stem}.bin') == item['input_sha256'], name + ' input hash mismatch')
         for kind in ('alenb_res', 'alenb_cap', 'alesw_res', 'alesw_cap', 'blank_res', 'blank_cap'):
-            g.require(g.sha(f'{stem}_{kind}.bin') == item[kind + '_sha256'], f'{name} {kind} hash mismatch (run prepare_matched.py / copy again)')
+            g.require(g.sha(f'{stem}_{kind}.bin') == item[kind + '_sha256'], f'{name} {kind} hash mismatch (run prepare_matched_vectors.py / copy again)')
         for kind, key in (('gate_res', 'gate_expected_sha256'), ('fft_res', 'fft_expected_sha256'), ('spikes', 'spikes_sha256')):
             g.require(g.sha(f'{stem}_{kind}.bin') == item[key], f'{name} {kind} hash mismatch')
         x = np.fromfile(f'{stem}.bin', dtype='<i2'); n = len(x); G = n // 50

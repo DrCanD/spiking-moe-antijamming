@@ -1,13 +1,14 @@
 cff-version: 1.2.0
-message: >-
-  If you use this research software, cite the associated manuscript and the
-  specific repository version used to generate your results.
+message: "Please cite this software and its accompanying paper when using the receiver, experiments or recorded results."
 type: software
-title: Spiking Front End Mixture of Experts for Physics Aware Anti-Jamming
+title: "Spiking Front End MoE for Physics-Aware Anti-Jamming: Code and Results"
 authors:
   - family-names: Dikmen
-    given-names: İsmail Can
-version: 0.1.0-review-draft
-abstract: >-
-  Synthetic baseband receiver simulations, frozen stream validation protocols,
-  KV260 state-bound resonator front end, and raw paired energy measurement audits.
+    given-names: I. Can
+repository-code: "https://github.com/DrCanD/spiking-moe-antijamming"
+license: MIT
+keywords:
+  - anti-jamming
+  - spiking neural networks
+  - mixture of experts
+  - KV260

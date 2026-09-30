@@ -1,0 +1,97 @@
+{
+  "smoke": false,
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "conditions": [
+    "fixed",
+    "random"
+  ],
+  "theta_list": [
+    0.04,
+    1.0,
+    2.0
+  ],
+  "m_list": [
+    0,
+    16,
+    64
+  ],
+  "tau_list": [
+    8.0
+  ],
+  "w_seeds": [
+    42,
+    1,
+    2
+  ],
+  "tau_ref": 8.0,
+  "w_seed_ref": 42,
+  "feature_sets": [
+    "full7",
+    "spike5_welch512",
+    "spike5_welch512_drift",
+    "spike5_snap2048_drift",
+    "rf_th_lo",
+    "rf_th_hi",
+    "rf_analog",
+    "rf_compact_lo"
+  ],
+  "rf_bands": 16,
+  "rf_f_lo_hz": 25000.0,
+  "rf_f_hi_hz": 475000.0,
+  "rf_tau": 15.0,
+  "rf_th_lo": 0.12,
+  "rf_th_hi": 0.2,
+  "nb_f_range": [
+    0.05,
+    0.95
+  ],
+  "sweep_f_range": [
+    0.05,
+    0.95
+  ],
+  "sweep_dur_range": [
+    0.5,
+    2.0
+  ],
+  "pulse_duty_range": [
+    0.1,
+    0.4
+  ],
+  "pulse_period_range": [
+    300,
+    800
+  ],
+  "frame_samples": 10000,
+  "snr_db": 10.0,
+  "train_jsr": [
+    4,
+    8,
+    12,
+    16,
+    20
+  ],
+  "n_train_clean": 50,
+  "n_train_per": 10,
+  "test_jsr": [
+    6,
+    10,
+    14,
+    18
+  ],
+  "n_test_clean": 15,
+  "n_test_per": 15,
+  "rf_trees": 100,
+  "rf_depth": 10,
+  "rf_seed": 42,
+  "enc_refractory": 2,
+  "e_sop_pj": 20.0,
+  "e_neuron_pj": 81.0,
+  "e_mac_pj": 10.0,
+  "n_jobs": -1
+}

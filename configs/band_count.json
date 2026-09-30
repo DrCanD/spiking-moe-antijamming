@@ -1,0 +1,56 @@
+{
+  "smoke": false,
+  "k_list": [
+    16,
+    12,
+    10,
+    8,
+    6,
+    4
+  ],
+  "tau_modes": [
+    "fixed",
+    "scaled"
+  ],
+  "ref_k": 16,
+  "ref_tau": 15.0,
+  "conditions": [
+    "fixed",
+    "random"
+  ],
+  "model_seeds": [
+    811,
+    821,
+    823,
+    827,
+    829
+  ],
+  "retrain_control": true,
+  "reseed_offset": 100000,
+  "case_ids": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "trials_per_cell": 8,
+  "policies": [
+    "refresh_guard8",
+    "current_periodic"
+  ],
+  "train_streams_per_class": 20,
+  "test_streams_per_class": 20,
+  "n_boot": 2000,
+  "boot_seed": 926001,
+  "n_jobs": -1,
+  "quality_tolerances": {
+    "bler_pp": 1.0,
+    "first_word_pp": 2.0,
+    "crossing_word_pp": 2.0,
+    "extra_undetected_wrong": 0
+  }
+}

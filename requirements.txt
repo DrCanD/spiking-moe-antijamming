@@ -1,0 +1,4 @@
+-r simulation/streaming/frozen_v4/requirements.txt
+torch==2.14.0
+tqdm==4.67.1
+matplotlib==3.10.8

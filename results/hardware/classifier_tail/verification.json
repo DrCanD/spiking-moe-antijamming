@@ -1,0 +1,247 @@
+{
+ "reports": [
+  {
+   "name": "fixed_broadband_0",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "fixed_broadband_1",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "fixed_broadband_2",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "fixed_narrowband_0",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "fixed_narrowband_1",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "fixed_narrowband_2",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "fixed_none_0",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "fixed_none_1",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "fixed_none_2",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "fixed_pulse_0",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "fixed_pulse_1",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "fixed_pulse_2",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "fixed_sweep_0",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "fixed_sweep_1",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "fixed_sweep_2",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "random_broadband_0",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "random_broadband_1",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "random_broadband_2",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "random_narrowband_0",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "random_narrowband_1",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "random_narrowband_2",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "random_none_0",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "random_none_1",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "random_none_2",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "random_pulse_0",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "random_pulse_1",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "random_pulse_2",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "random_sweep_0",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "random_sweep_1",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  },
+  {
+   "name": "random_sweep_2",
+   "pass": true,
+   "feature_mismatches": 0,
+   "max_ulp": 0,
+   "verdict_mismatches": 0,
+   "own_ok": true
+  }
+ ],
+ "passed": 30,
+ "total": 30,
+ "timestamp": "2023-11-22 18:11:13"
+}
