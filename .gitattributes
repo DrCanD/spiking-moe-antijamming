@@ -1,0 +1,2 @@
+# Keep recorded SHA-256 identities byte-exact across Git checkout platforms.
+* -text
