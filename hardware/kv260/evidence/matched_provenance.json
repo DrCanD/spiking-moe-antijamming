@@ -1,0 +1,21 @@
+{
+  "campaign": {
+    "archive": "results/hardware/KV260_MATCHED_RESULTS.zip",
+    "archive_sha256": "a3c935d654ffa6dc2469ea742e811b61ecbf180eccf0d78b76e97c65d0aaca8a",
+    "member": "provenance/evidence/matched_native_verification.json",
+    "receipt": "evidence/campaign/matched_native_verification.json",
+    "receipt_sha256": "31cbad27eedcbf5c7e77e927dd3a081cf70d3f428333c30e26b48bfaeb23c4e9",
+    "testbench_recorded_path": "hls/tb/tb_matched.cpp",
+    "testbench_sha256": "c65a90c428ad740a6345674e3d41fb40587dea7ba8b4a02cfcb135c1ce6fdd3c",
+    "testbench_source_recovered": false
+  },
+  "regeneration": {
+    "testbench": "hls/tb/tb_matched.cpp",
+    "testbench_sha256": "b193ecca36ed2a5b0da9dd5dc76f27f9691bfa60da68f976b689e986b54627f0",
+    "testbench_role": "reconstructed after campaign; validates archived capture hashes",
+    "runner": "prepare_matched_vectors.py",
+    "new_receipt": "evidence/matched_regeneration.json",
+    "reference_receipt": "evidence/matched_regeneration_reference.json",
+    "capture_manifest": "vectors/manifest_matched.json"
+  }
+}

@@ -26,7 +26,6 @@ The receiver uses spike timing to identify interference structure, selects the a
 | [`hardware/kv260/classifier_tail/`](hardware/kv260/classifier_tail/) | Feature-finalisation and Random Forest hardware, both frozen forests, native tests and classifier power protocol. |
 | [`analysis/`](analysis/) | Frame/stream record audits and raw-energy reproduction. |
 | [`results/`](results/) | Recorded simulation summaries and raw hardware-power evidence. |
-| [`figures/`](figures/) | PDF figures and editable architecture slides. |
 
 ## Setup
 
@@ -98,4 +97,25 @@ python hardware/kv260/build_kv260.py --jobs 4
 
 Matched-vector regeneration reproduces **all 78 recorded captures byte for byte**. Classifier native verification checks **44 frames**, all nine features and both forests over all twenty subframe rotations. New synthesis requires AMD Vitis/Vivado 2025.2; new power measurements require a KV260. Board runners are [`run_gate.py`](hardware/kv260/board/run_gate.py), [`run_matched.py`](hardware/kv260/board/run_matched.py) and [`measure_classifier.py`](hardware/kv260/classifier_tail/board/measure_classifier.py).
 
-See [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) for source/evidence mapping. Code is distributed under the **[MIT license](LICENSE)**.
+See [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) for source/evidence mapping.
+
+## Repository integrity
+
+Binary restoration checks its dedicated asset manifest. Repository and hardware
+checksums are generated together, and CI checks for stale manifests and a clean
+checkout after restoration:
+
+```bash
+python scripts/update_manifests.py --check
+```
+
+After editing files, stage additions/deletions and regenerate the manifests:
+
+```bash
+git add -A
+python scripts/update_manifests.py
+git add -A
+```
+
+Code is distributed under **[MIT](LICENSE)**; recorded data, model parameters and
+measurement evidence are available under **[CC BY 4.0](DATA_LICENSE.md)**.

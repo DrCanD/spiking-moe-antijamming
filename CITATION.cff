@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "Please cite this software and its accompanying paper when using the receiver, experiments or recorded results."
+message: "Please cite this software and its accompanying paper when using the receiver, experiments or recorded results. Code: MIT; recorded data and measurement evidence: CC BY 4.0."
 type: software
 title: "Spiking Front End MoE for Physics-Aware Anti-Jamming: Code and Results"
 authors:

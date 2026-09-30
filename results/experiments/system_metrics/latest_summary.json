@@ -254,14 +254,21 @@
     "recommended_runtime": "GPU (T4 is enough); ~25-35 min (router features on 100k-sample frames dominate)"
   },
   "reference": {
-    "notebook": "simulation/frame_receiver/reference_receiver.py",
-    "sha256_16": "7601c584f5c4ad65",
-    "imports_skipped": []
+    "imports_skipped": [],
+    "recorded_notebook": {
+      "sha256_16": "7601c584f5c4ad65",
+      "hash_scope": "Notebook text loaded during the recorded run",
+      "distributed": false
+    },
+    "distributed_source": {
+      "path": "simulation/frame_receiver/reference_receiver.py",
+      "sha256": "3052eec561d5dacc03a28635131460bd42bcb143051c89893cf9e6dbab2a1366"
+    }
   },
   "deviations": [
     "final MoE frozen in Exp 6a: front-end B router + {ALE-128 mu_NB, ALE-128 mu_SW, calibrated blanker, pass-through} + override + cascade",
     "switching: reference scenario (100 frames) and seeds 30000+trial*1000+frame; 'fixed blanker' re-implemented from the reference eval (within-frame z>3)",
-    "MoE-conv: the reference 7 conventional features (full FFT) as the router, SAME experts \u2014 routing-parity row",
+    "MoE-conv: the reference 7 conventional features (full FFT) as the router, SAME experts — routing-parity row",
     "goodput/duty: reference protocol and seeds; duty variation uses the reference add_pulse_jam_variable (fixed protocol) and random duty/period/phase (random protocol)",
     "fading: reference simulate_rayleigh (fixed jammers; block-faded signal, unfaded jammer); random protocol = same fading + randomised jammers; AWGN-trained router AND a fading-augmented router (AWGN + faded training frames) reported",
     "SNR: routers and blanker calibration at 10 dB, tested at other SNRs; override uses rho only (no SNR knowledge)",

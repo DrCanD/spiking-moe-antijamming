@@ -1,0 +1,254 @@
+{
+  "vectors": 13,
+  "excluded": {
+    "rtl_smoke": "NLMS gain exceeds the 48-bit hardware register on tone-to-exact-silence edges (MOE_ASSERT); not a receiver input"
+  },
+  "source_digest": "90e0039e5aaad84606f142049be6d337fe62a4f9ef597cfc5f363c82bd7c067f",
+  "hls_source_modified": false,
+  "testbench": "hls/tb/tb_matched.cpp",
+  "testbench_sha256": "c65a90c428ad740a6345674e3d41fb40587dea7ba8b4a02cfcb135c1ce6fdd3c",
+  "independent_golden": "tools/fxgolden_v1.py (v1 package fx_ale, fx_blanker_mask)",
+  "independent_golden_sha256": "9a38fbf1c12835e09661ff7669a45253f53b95119c913c917c4cdf0e24a40c84",
+  "native_cpp_equals_python_golden": true,
+  "combinations_checked": [
+    "FE_v3+ALE_NB",
+    "FFT1024+ALE_NB"
+  ],
+  "manifest_matched_sha256": "2ea96ce7b2d65a0610c5229ffc11a042c1418fb3c881594aba2d1e3a1a2eeb5d",
+  "checks": [
+    {
+      "vector": "fixed_none",
+      "n_samples": 100000,
+      "alenb": {
+        "sum_e2": 111487267510,
+        "saturated_samples": 0,
+        "residual_power_ratio": 0.9655390384873542
+      },
+      "alesw": {
+        "sum_e2": 106070146804,
+        "saturated_samples": 0,
+        "residual_power_ratio": 0.9186238917207333
+      },
+      "blank": {
+        "groups": 2000,
+        "flagged": 5
+      }
+    },
+    {
+      "vector": "fixed_narrowband",
+      "n_samples": 100000,
+      "alenb": {
+        "sum_e2": 121576946882,
+        "saturated_samples": 0,
+        "residual_power_ratio": 0.06249716665902
+      },
+      "alesw": {
+        "sum_e2": 122893739574,
+        "saturated_samples": 0,
+        "residual_power_ratio": 0.06317406975979599
+      },
+      "blank": {
+        "groups": 2000,
+        "flagged": 2000
+      }
+    },
+    {
+      "vector": "fixed_sweep",
+      "n_samples": 100000,
+      "alenb": {
+        "sum_e2": 185797957165,
+        "saturated_samples": 0,
+        "residual_power_ratio": 0.09567851753364172
+      },
+      "alesw": {
+        "sum_e2": 133963835111,
+        "saturated_samples": 0,
+        "residual_power_ratio": 0.06898601761890745
+      },
+      "blank": {
+        "groups": 2000,
+        "flagged": 2000
+      }
+    },
+    {
+      "vector": "fixed_pulse",
+      "n_samples": 100000,
+      "alenb": {
+        "sum_e2": 2032386310434,
+        "saturated_samples": 11,
+        "residual_power_ratio": 1.0372912970458221
+      },
+      "alesw": {
+        "sum_e2": 2171702661935,
+        "saturated_samples": 17,
+        "residual_power_ratio": 1.1083957116968461
+      },
+      "blank": {
+        "groups": 2000,
+        "flagged": 400
+      }
+    },
+    {
+      "vector": "fixed_broadband",
+      "n_samples": 100000,
+      "alenb": {
+        "sum_e2": 1956837893423,
+        "saturated_samples": 0,
+        "residual_power_ratio": 1.0094838871311567
+      },
+      "alesw": {
+        "sum_e2": 1986477633694,
+        "saturated_samples": 0,
+        "residual_power_ratio": 1.0247742902467607
+      },
+      "blank": {
+        "groups": 2000,
+        "flagged": 2000
+      }
+    },
+    {
+      "vector": "fixed_switching",
+      "n_samples": 100000,
+      "alenb": {
+        "sum_e2": 2018590605183,
+        "saturated_samples": 270,
+        "residual_power_ratio": 0.6305463763764902
+      },
+      "alesw": {
+        "sum_e2": 2084967453578,
+        "saturated_samples": 293,
+        "residual_power_ratio": 0.6512804871581881
+      },
+      "blank": {
+        "groups": 2000,
+        "flagged": 1401
+      }
+    },
+    {
+      "vector": "random_none",
+      "n_samples": 100000,
+      "alenb": {
+        "sum_e2": 111383811599,
+        "saturated_samples": 0,
+        "residual_power_ratio": 0.9646249544154593
+      },
+      "alesw": {
+        "sum_e2": 105598542795,
+        "saturated_samples": 0,
+        "residual_power_ratio": 0.9145223894535884
+      },
+      "blank": {
+        "groups": 2000,
+        "flagged": 2
+      }
+    },
+    {
+      "vector": "random_narrowband",
+      "n_samples": 100000,
+      "alenb": {
+        "sum_e2": 120873419139,
+        "saturated_samples": 0,
+        "residual_power_ratio": 0.06236177959738557
+      },
+      "alesw": {
+        "sum_e2": 122793404994,
+        "saturated_samples": 0,
+        "residual_power_ratio": 0.06335235085426313
+      },
+      "blank": {
+        "groups": 2000,
+        "flagged": 2000
+      }
+    },
+    {
+      "vector": "random_sweep",
+      "n_samples": 100000,
+      "alenb": {
+        "sum_e2": 132481347539,
+        "saturated_samples": 0,
+        "residual_power_ratio": 0.06858242830467803
+      },
+      "alesw": {
+        "sum_e2": 124892466633,
+        "saturated_samples": 0,
+        "residual_power_ratio": 0.06465384597730345
+      },
+      "blank": {
+        "groups": 2000,
+        "flagged": 2000
+      }
+    },
+    {
+      "vector": "random_pulse",
+      "n_samples": 100000,
+      "alenb": {
+        "sum_e2": 2013481234869,
+        "saturated_samples": 19,
+        "residual_power_ratio": 1.0411936138471543
+      },
+      "alesw": {
+        "sum_e2": 2162983292101,
+        "saturated_samples": 25,
+        "residual_power_ratio": 1.1185027958505802
+      },
+      "blank": {
+        "groups": 2000,
+        "flagged": 535
+      }
+    },
+    {
+      "vector": "random_broadband",
+      "n_samples": 100000,
+      "alenb": {
+        "sum_e2": 1972043320652,
+        "saturated_samples": 0,
+        "residual_power_ratio": 1.009408918982739
+      },
+      "alesw": {
+        "sum_e2": 2001829689712,
+        "saturated_samples": 0,
+        "residual_power_ratio": 1.0246553521003112
+      },
+      "blank": {
+        "groups": 2000,
+        "flagged": 2000
+      }
+    },
+    {
+      "vector": "random_switching",
+      "n_samples": 100000,
+      "alenb": {
+        "sum_e2": 1240337952052,
+        "saturated_samples": 72,
+        "residual_power_ratio": 0.3119136683902773
+      },
+      "alesw": {
+        "sum_e2": 1266351482885,
+        "saturated_samples": 81,
+        "residual_power_ratio": 0.3184554143849725
+      },
+      "blank": {
+        "groups": 2000,
+        "flagged": 1486
+      }
+    },
+    {
+      "vector": "edge_silence",
+      "n_samples": 4000,
+      "alenb": {
+        "sum_e2": 0,
+        "saturated_samples": 0,
+        "residual_power_ratio": 0.0
+      },
+      "alesw": {
+        "sum_e2": 0,
+        "saturated_samples": 0,
+        "residual_power_ratio": 0.0
+      },
+      "blank": {
+        "groups": 80,
+        "flagged": 0
+      }
+    }
+  ]
+}

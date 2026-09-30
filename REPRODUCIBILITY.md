@@ -15,9 +15,11 @@
 
 ## Source identity
 
-The gate's synthesizable HLS sources retain the recorded build digest `90e0039e5aaad84606f142049be6d337fe62a4f9ef597cfc5f363c82bd7c067f`. Frozen numerical snapshots retain their recorded source hashes. Importable original receiver definitions replace the executed notebook; the definitions selected by the frame programs are unchanged.
+The gate's synthesizable HLS sources retain the recorded build digest `90e0039e5aaad84606f142049be6d337fe62a4f9ef597cfc5f363c82bd7c067f`. Frozen numerical snapshots retain their recorded source hashes. Importable original receiver definitions replace the executed notebook; the definitions selected by the frame programs are unchanged. Historical summaries label the original run-time notebook hash as `reference.recorded_notebook.sha256_16`. The separate `reference.distributed_source` field identifies the current Python source and its full SHA-256. These are different source artifacts.
 
-The matched-vector generator was recovered, and its integer golden has recorded SHA-256 `9a38fbf1c12835e09661ff7669a45253f53b95119c913c917c4cdf0e24a40c84`. The regenerated native testbench produces all **78 captures** with the archived hashes. The campaign receipt remains in `evidence/matched_native_verification.json`; a new execution writes `evidence/matched_regeneration.json`.
+The matched-vector generator was recovered, and its integer golden has recorded SHA-256 `9a38fbf1c12835e09661ff7669a45253f53b95119c913c917c4cdf0e24a40c84`. The reconstructed native testbench produces all **78 captures** with the archived hashes.
+
+The original campaign receipt is preserved byte for byte at `hardware/kv260/evidence/campaign/matched_native_verification.json`, extracted from `provenance/evidence/matched_native_verification.json` in `results/hardware/KV260_MATCHED_RESULTS.zip`. It records the campaign testbench hash `c65a90c428ad740a6345674e3d41fb40587dea7ba8b4a02cfcb135c1ce6fdd3c`; that original testbench source was not recovered. The distributed regeneration testbench has hash `b193ecca36ed2a5b0da9dd5dc76f27f9691bfa60da68f976b689e986b54627f0`. `hardware/kv260/evidence/matched_provenance.json` maps these identities. A new native run writes `hardware/kv260/evidence/matched_regeneration.json`; it does not overwrite the campaign receipt or the recorded capture manifest. The checked regeneration reference is stored separately as `matched_regeneration_reference.json`.
 
 Classifier-tail sources, exported forests and the 44-frame binary test set were recovered from the measured design. Native verification gives zero feature and verdict mismatches across both forests and all twenty subframe rotations. `extract_vectors.py` restores the frame-word inputs for board verification and measurement.
 
@@ -33,6 +35,8 @@ The portable raw-energy auditor changes evidence filenames and temporary-directo
 
 ## Distribution
 
-Project input/output paths are relative. Device files and vendor tools are resolved on the machine executing the hardware workflow. Binary models, captures, figures and test vectors are restored from `assets/binary-evidence.zip` and checked against `MANIFEST_SHA256.txt`. Proprietary AMD tool installations and generated bitstreams are not bundled.
+Project input/output paths are relative. Device files and vendor tools are resolved on the machine executing the hardware workflow. Binary models, captures and test vectors are restored from `assets/binary-evidence.zip` and checked against `assets/manifest.json`. Restored assets and new verification receipts are ignored by Git. Proprietary AMD tool installations and generated bitstreams are not bundled.
 
-The repository is public and MIT licensed. A tagged release can be archived for a DOI; add the DOI after that archive has been created.
+`scripts/update_manifests.py` generates the asset manifest, restored-file ignore rules, `hardware/kv260/PACKAGE_SHA256.json` and `MANIFEST_SHA256.txt` together. It uses Git's distributed file list and the archived asset bytes, excluding local build outputs and new run receipts. `--check` detects stale generated files without changing them. Binary restoration is independent of documentation edits. CI checks both manifests, restoration and a clean checkout.
+
+Code is licensed under [MIT](LICENSE). Recorded data, model parameters and measurement evidence are licensed under [CC BY 4.0](DATA_LICENSE.md). A tagged release can be archived for a DOI; add the DOI after that archive has been created.

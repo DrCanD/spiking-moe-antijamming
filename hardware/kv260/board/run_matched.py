@@ -194,7 +194,10 @@ def write_archive(out):
         for p in sorted(out.rglob('*')):
             if p.is_file() and p.suffix not in ('.zip', '.tmp'): z.write(p, p.relative_to(out))
         for rel in ['build_identity.json', 'board/build_receipt.json', 'evidence/native_verification.json',
-                    'evidence/matched_native_verification.json', 'vectors/manifest_matched.json', 'board/run_matched.py']:
+                    'evidence/campaign/matched_native_verification.json', 'evidence/matched_regeneration.json',
+                    'evidence/matched_provenance.json', 'hls/tb/tb_matched.cpp',
+                    'prepare_matched_vectors.py', 'tools/fixed_experts.py',
+                    'vectors/manifest_matched.json', 'board/run_matched.py']:
             if (ROOT / rel).exists(): z.write(ROOT / rel, 'provenance/' + rel)
 
 

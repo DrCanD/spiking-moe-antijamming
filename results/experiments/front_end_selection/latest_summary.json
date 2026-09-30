@@ -174,14 +174,21 @@
     "recommended_runtime": "CPU or T4 (no training; numpy + sklearn only)"
   },
   "reference": {
-    "notebook": "simulation/frame_receiver/reference_receiver.py",
-    "sha256_16": "20916f2bbe1be5e4",
     "phase1_watchdog": "n_neurons=64, anomaly_z=2.5, tau_m=8.0, n_subframes=20",
     "phase1_encoder": "threshold=0.04, refractory=2",
     "imports_skipped": [
       "from reedsolo import RSCodec, ReedSolomonError  (ModuleNotFoundError)",
       "from reedsolo import RSCodec, ReedSolomonError  (ModuleNotFoundError)"
-    ]
+    ],
+    "recorded_notebook": {
+      "sha256_16": "20916f2bbe1be5e4",
+      "hash_scope": "Notebook text loaded during the recorded run",
+      "distributed": false
+    },
+    "distributed_source": {
+      "path": "simulation/frame_receiver/reference_receiver.py",
+      "sha256": "3052eec561d5dacc03a28635131460bd42bcb143051c89893cf9e6dbab2a1366"
+    }
   },
   "deviations": [
     "tau_ref=8.0 is the headline (reference Phase 1 instantiated tau_m=8.0; paper text says 10); tau swept over [8.0]",

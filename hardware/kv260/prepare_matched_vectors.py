@@ -6,14 +6,14 @@ FE_v3+ALE_NB and FFT+ALE_NB combination checks, from the SAME HLS source that bu
      re-reads them and checks the two combinations against the single-block expectations;
   2. cross-checks those files against an INDEPENDENT integer model: tools/fixed_experts.py (fx_ale, fx_blanker_mask),
      the independent Python integer recurrence, so the C++ block is shown to implement the specified NLMS / blanker;
-  3. writes vectors/manifest_matched.json (sha256 of every new file) and evidence/matched_native_verification.json.
+  3. compares with vectors/manifest_matched.json and writes evidence/matched_regeneration.json.
 
 rtl_smoke is excluded: its full-scale tones followed by exact digital silence drive the NLMS gain beyond the 48-bit
 hardware register (the C model's MOE_ASSERT fires), so the native and ap_int builds are not required to agree there.
-No existing file of the v3 package is modified; the bitstream, regmap and build identity are untouched.
+The campaign receipt and capture manifest are read-only. Generated captures must match their recorded hashes.
 Run from the package root:  python3 prepare_matched_vectors.py      (g++ and numpy required)
 """
-import hashlib, json, re, subprocess, sys
+import hashlib, json, re, shutil, subprocess, sys, tempfile
 from pathlib import Path
 from types import SimpleNamespace
 import numpy as np
@@ -50,8 +50,7 @@ def s32(v): v = int(v); return v - (1 << 32) if v >= (1 << 31) else v
 def sat16(e): return np.clip(e, -32768, 32767).astype(np.int16)
 
 
-def golden_check(name, p, cfg, lut):
-    vec = ROOT / 'vectors'
+def golden_check(name, p, cfg, lut, vec):
     x = np.fromfile(vec / f'{name}.bin', dtype='<i2').astype(np.int64); n = len(x)
     out = {'vector': name, 'n_samples': n}
     sum_x2 = int(np.dot(x, x))
@@ -81,38 +80,50 @@ def main():
     p, cfg, lut = params()
     manifest = json.loads((ROOT / 'vectors/manifest.json').read_text())
     names = [r['name'] for r in manifest if r['name'] not in EXCLUDED]
-    exe = ROOT / 'evidence/tb_matched_native'
-    subprocess.run(['g++', '-O2', '-std=c++14', '-w', '-DN_REPL=1', '-I' + str(ROOT / 'hls/src'), str(ROOT / 'hls/src/moe_top.cpp'),
-                    str(ROOT / 'hls/tb/tb_matched.cpp'), '-o', str(exe)], check=True)
-    run = subprocess.run([str(exe), str(ROOT / 'vectors'), *names, '--generate'], capture_output=True, text=True)
-    print(run.stdout, end='', flush=True)
-    if run.returncode: print(run.stderr, flush=True); raise SystemExit(f'tb_matched failed ({run.returncode})')
-    rerun = subprocess.run([str(exe), str(ROOT / 'vectors'), *names], capture_output=True, text=True)
-    if rerun.returncode: print(rerun.stderr, flush=True); raise SystemExit('tb_matched compare pass failed')
-    checks = []
-    for name in names:
-        c = golden_check(name, p, cfg, lut); checks.append(c)
-        print(f"[GOLDEN] {name}: ALE_NB/ALE_SW/blanker == independent integer recurrence | e2/x2 NB {c['alenb']['residual_power_ratio']:.3f} "
-              f"SW {c['alesw']['residual_power_ratio']:.3f} | blank {c['blank']['flagged']}/{c['blank']['groups']}", flush=True)
-    base = {r['name']: r for r in manifest}
-    items = []
     recorded_path = ROOT / 'vectors/manifest_matched.json'
-    recorded = json.loads(recorded_path.read_text()) if recorded_path.exists() else None
-    for name in names:
-        item = {'name': name, 'n_samples': base[name]['n_samples'], 'input_sha256': base[name]['input_sha256'],
-                'gate_expected_sha256': base[name]['gate_expected_sha256'], 'fft_expected_sha256': base[name]['fft_expected_sha256'],
-                'spikes_sha256': base[name]['spikes_sha256']}
-        for k in KINDS: item[k + '_sha256'] = sha(ROOT / 'vectors' / f'{name}_{k}.bin')
-        items.append(item)
-    if recorded is not None and items != recorded:
-        raise RuntimeError('Regenerated captures differ from the recorded manifest; original receipt retained')
-    (ROOT / 'vectors/manifest_matched.json').write_text(json.dumps(items, indent=2))
-    (ROOT / 'evidence/matched_native_verification.json').write_text(json.dumps({
+    recorded = json.loads(recorded_path.read_text())
+    campaign_path = ROOT / 'evidence/campaign/matched_native_verification.json'
+    campaign = json.loads(campaign_path.read_text())
+    base = {r['name']: r for r in manifest}
+    with tempfile.TemporaryDirectory(prefix='matched_vectors_') as temporary:
+        work = Path(temporary)
+        vec = work / 'vectors'
+        shutil.copytree(ROOT / 'vectors', vec)
+        exe = work / 'tb_matched_native'
+        subprocess.run(['g++', '-O2', '-std=c++14', '-w', '-DN_REPL=1', '-I' + str(ROOT / 'hls/src'),
+                        str(ROOT / 'hls/src/moe_top.cpp'), str(ROOT / 'hls/tb/tb_matched.cpp'), '-o', str(exe)], check=True)
+        run = subprocess.run([str(exe), str(vec), *names, '--generate'], capture_output=True, text=True)
+        print(run.stdout, end='', flush=True)
+        if run.returncode: print(run.stderr, flush=True); raise SystemExit(f'tb_matched failed ({run.returncode})')
+        rerun = subprocess.run([str(exe), str(vec), *names], capture_output=True, text=True)
+        if rerun.returncode: print(rerun.stderr, flush=True); raise SystemExit('tb_matched compare pass failed')
+        checks, items = [], []
+        for name in names:
+            c = golden_check(name, p, cfg, lut, vec); checks.append(c)
+            print(f"[GOLDEN] {name}: ALE_NB/ALE_SW/blanker == independent integer recurrence | e2/x2 NB {c['alenb']['residual_power_ratio']:.3f} "
+                  f"SW {c['alesw']['residual_power_ratio']:.3f} | blank {c['blank']['flagged']}/{c['blank']['groups']}", flush=True)
+            item = {'name': name, 'n_samples': base[name]['n_samples'], 'input_sha256': base[name]['input_sha256'],
+                    'gate_expected_sha256': base[name]['gate_expected_sha256'], 'fft_expected_sha256': base[name]['fft_expected_sha256'],
+                    'spikes_sha256': base[name]['spikes_sha256']}
+            for k in KINDS: item[k + '_sha256'] = sha(vec / f'{name}_{k}.bin')
+            items.append(item)
+        if items != recorded:
+            raise RuntimeError('Regenerated captures differ from the recorded manifest; campaign files retained')
+        for name in names:
+            for kind in KINDS:
+                filename = f'{name}_{kind}.bin'
+                shutil.copyfile(vec / filename, ROOT / 'vectors' / filename)
+    (ROOT / 'evidence/matched_regeneration.json').write_text(json.dumps({
+        'receipt_kind': 'post_campaign_regeneration',
+        'campaign_receipt': 'evidence/campaign/matched_native_verification.json',
+        'campaign_receipt_sha256': sha(campaign_path),
+        'campaign_testbench_sha256': campaign['testbench_sha256'],
+        'all_capture_hashes_match_campaign': True, 'captures': len(names) * len(KINDS),
         'vectors': len(names), 'excluded': EXCLUDED, 'source_digest': json.loads((ROOT / 'build_identity.json').read_text())['source_digest'],
         'hls_source_modified': False, 'testbench': 'hls/tb/tb_matched.cpp', 'testbench_sha256': sha(ROOT / 'hls/tb/tb_matched.cpp'),
         'independent_golden': 'tools/fixed_experts.py', 'independent_golden_sha256': sha(ROOT / 'tools/fixed_experts.py'),
         'native_cpp_equals_python_golden': True, 'combinations_checked': ['FE_v3+ALE_NB', 'FFT1024+ALE_NB'],
-        'manifest_matched_sha256': sha(ROOT / 'vectors/manifest_matched.json'), 'checks': checks}, indent=2))
+        'manifest_matched_sha256': sha(recorded_path), 'checks': checks}, indent=2) + '\n')
     print(f'MATCHED EXPECTATIONS READY: {len(names)} vectors; native C++ == independent integer recurrence for ALE_NB, ALE_SW, blanker', flush=True)
 
 

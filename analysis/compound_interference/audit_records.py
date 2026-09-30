@@ -56,7 +56,7 @@ def main():
     n_symbols = config["n_sym_test"]
     assert len(units) == len(raw["units_done"]) == 32
     assert set(units) == set(raw["units_done"])
-    assert raw["ref_hash"] == summary["reference"]["sha256_16"]
+    assert raw["ref_hash"] == summary["reference"]["recorded_notebook"]["sha256_16"]
     means_checked, max_mean_difference = 0, 0.0
     cell_rows, pooled_groups = [], collections.defaultdict(list)
     n_empty, n_empty_score_half, n_nonempty_score_half = 0, 0, 0
@@ -120,7 +120,7 @@ def main():
                           for name in ("summary.json", "partial.json")},
         "original_repro_check_scope": "102 saved aggregate comparisons; not an independent per-sample rerun",
         "limits": ["No compound comparison execution source snapshot found; exact source parity not independently verified.",
-                   "Local reference notebook SHA differs from run reference; source inspection is lineage evidence only.",
+                   "Recorded notebook hashes identify historical run-time text; the distributed Python definitions have a separate source hash.",
                    "No oracle survival masks, bit positions or FEC decoder outputs in saved per-frame records.",
                    "Correct retained fraction is an uncoded accounting metric, not packet goodput or post-FEC success.",
                    "The conditional BER of empty-output frames is undefined; 0.5 is retained only as a legacy score.",

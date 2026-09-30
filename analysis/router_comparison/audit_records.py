@@ -49,7 +49,7 @@ def main():
     data = ap["per_frame"]
     assert len(data) == len(ap["units_done"]) == 120
     assert set(data) == set(ap["units_done"])
-    assert ap["ref_hash"] == a["reference"]["sha256_16"]
+    assert ap["ref_hash"] == a["reference"]["recorded_notebook"]["sha256_16"]
     arms = ["none","moe_hard","moe_final","ale_nb","ale_sw","chain_nb","chain_sw","rule_nb","rule_sw","oracle"]
     checked, maxdiff = 0, 0.0
     for unit, rows in data.items():
@@ -172,7 +172,7 @@ def main():
                             "Frame-mode BER/retention and streaming coded-word BLER describe different protocols.",
                             "Tap products and full-frame pass counts exclude front-end/router/masking/decoder energy.",
                             "Five model-seed blocks give an exploratory interval, not a comprehensive training-variance study.",
-                            "Exact frame/stream wrapper source snapshots were not retrieved; 9b frozen dependency hashes were verified."])
+                            "Exact frame/stream wrapper source snapshots were not retrieved; stream frozen dependency hashes were verified."])
     (ROOT/"audit_summary.json").write_text(json.dumps(audit,ensure_ascii=False,indent=2),encoding="utf-8")
     print(json.dumps({"exp9a":audit["exp9a"],"stream_words":audit["exp9b"]["words_per_receiver"],
                       "stream_frozen_sources_matched":source_check.get("matched"),"seed_cluster_ci":ci},ensure_ascii=False,indent=2))

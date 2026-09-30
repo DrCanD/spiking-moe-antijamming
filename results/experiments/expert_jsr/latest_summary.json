@@ -205,12 +205,19 @@
     "recommended_runtime": "GPU (T4 is enough); LSTM retraining ~2 min each, BER sweep ~10-15 min"
   },
   "reference": {
-    "notebook": "simulation/frame_receiver/reference_receiver.py",
-    "sha256_16": "acc1064729b59e91",
     "imports_skipped": [
       "from reedsolo import RSCodec, ReedSolomonError  (ModuleNotFoundError)",
       "from reedsolo import RSCodec, ReedSolomonError  (ModuleNotFoundError)"
-    ]
+    ],
+    "recorded_notebook": {
+      "sha256_16": "acc1064729b59e91",
+      "hash_scope": "Notebook text loaded during the recorded run",
+      "distributed": false
+    },
+    "distributed_source": {
+      "path": "simulation/frame_receiver/reference_receiver.py",
+      "sha256": "3052eec561d5dacc03a28635131460bd42bcb143051c89893cf9e6dbab2a1366"
+    }
   },
   "deviations": [
     "paper LSTM: weights from Drive; in_mean/in_std recomputed from the reference Phase-2 pairs (not stored in .pt)",

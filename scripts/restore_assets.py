@@ -1,47 +1,38 @@
-"""Restore archived binary evidence to the current checksum-verified layout."""
+"""Restore and verify binary assets without depending on editable documentation."""
 
-from pathlib import Path
 import hashlib
+import json
+from pathlib import Path
 import zipfile
 
+from update_manifests import safe_path
+
 ROOT = Path(__file__).resolve().parents[1]
-ARCHIVE = ROOT / "assets" / "binary-evidence.zip"
-MANIFEST = ROOT / "MANIFEST_SHA256.txt"
-ARCHIVE_PREFIXES = {}
 
 
 def main():
-    with zipfile.ZipFile(ARCHIVE) as bundle:
-        bad = bundle.testzip()
-        if bad is not None:
-            raise ValueError(f"Damaged archive member: {bad}")
-        for member in bundle.infolist():
-            relative = Path(member.filename)
-            if member.is_dir():
-                continue
-            if relative.is_absolute() or ".." in relative.parts:
-                raise ValueError(f"Unsafe archive path: {member.filename}")
-            name = member.filename
-            for old, new in ARCHIVE_PREFIXES.items():
-                if name.startswith(old):
-                    name = new + name[len(old):]
-                    break
-            destination = ROOT / name
+    manifest = json.loads((ROOT / "assets/manifest.json").read_text(encoding="utf-8"))
+    archive_path = ROOT / safe_path(manifest["archive"])
+    if hashlib.sha256(archive_path.read_bytes()).hexdigest() != manifest["archive_sha256"]:
+        raise ValueError("Checksum mismatch: binary asset archive")
+    with zipfile.ZipFile(archive_path) as archive:
+        members = [m for m in archive.infolist() if not m.is_dir()]
+        names = [m.filename for m in members]
+        if len(names) != len(set(names)) or set(names) != set(manifest["files"]):
+            raise ValueError("Archive membership differs from the asset manifest")
+        for member in members:
+            relative = safe_path(member.filename)
+            if (member.external_attr >> 16) & 0o170000 == 0o120000:
+                raise ValueError(f"Archive symlink: {member.filename}")
+            content = archive.read(member)
+            if hashlib.sha256(content).hexdigest() != manifest["files"][member.filename]:
+                raise ValueError(f"Checksum mismatch: {member.filename}")
+            destination = ROOT / relative
+            if not destination.resolve().is_relative_to(ROOT.resolve()):
+                raise ValueError(f"Asset destination escapes repository: {member.filename}")
             destination.parent.mkdir(parents=True, exist_ok=True)
-            with bundle.open(member) as source, destination.open("wb") as target:
-                while chunk := source.read(1024 * 1024):
-                    target.write(chunk)
-
-    checked = 0
-    for line in MANIFEST.read_text().splitlines():
-        expected, relative = line.split("  ", 1)
-        path = ROOT / relative
-        if not path.is_file():
-            raise FileNotFoundError(relative)
-        if hashlib.sha256(path.read_bytes()).hexdigest() != expected:
-            raise ValueError(f"Checksum mismatch: {relative}")
-        checked += 1
-    print(f"PASS: restored binary evidence and verified {checked} files")
+            destination.write_bytes(content)
+    print(f"PASS: restored and verified {len(members)} binary assets")
 
 
 if __name__ == "__main__":

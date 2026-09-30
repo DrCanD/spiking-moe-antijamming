@@ -153,7 +153,7 @@
   },
   "files_sha256": {
     "frame_records.json": "8c8e2a633a4a77420605fa714795e4b335154df9ba4b3a802e9f3a863fc3432b",
-    "frame_summary.json": "2f4ec01585c90e98426db6ccc070b826d9a4a79d50328cd59acb8ff0190b182f",
+    "frame_summary.json": "d43382f4ba565c0bce4519b74c46d09e562a6c719da6a0000d8205049a58c027",
     "stream_records.json": "19d9f5e588562efd28ce56e5dbdb7f383e0a54754f80c09e9c1cb477db0b4825",
     "stream_summary.json": "4cd35a60d1ce6d3c5b965c4fb0108c1fd4dc91cdc41027d367204396659a9d54"
   },
@@ -163,6 +163,6 @@
     "Frame-mode BER/retention and streaming coded-word BLER describe different protocols.",
     "Tap products and full-frame pass counts exclude front-end/router/masking/decoder energy.",
     "Five model-seed blocks give an exploratory interval, not a comprehensive training-variance study.",
-    "Exact Exp 9a/9b wrapper source snapshots were not retrieved; 9b frozen dependency hashes were verified."
+    "Exact frame/stream wrapper source snapshots were not retrieved; stream frozen dependency hashes were verified."
   ]
 }

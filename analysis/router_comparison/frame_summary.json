@@ -250,13 +250,20 @@
     "numba": true
   },
   "reference": {
-    "notebook": "simulation/frame_receiver/reference_receiver.py",
-    "sha256_16": "ccefb640771c1848",
     "imports_skipped": [
       "from reedsolo import RSCodec, ReedSolomonError  (ModuleNotFoundError)",
       "from reedsolo import RSCodec, ReedSolomonError  (ModuleNotFoundError)"
     ],
-    "exp6a_summary": "results/experiments/final_receiver/latest_summary.json"
+    "exp6a_summary": "results/experiments/final_receiver/latest_summary.json",
+    "recorded_notebook": {
+      "sha256_16": "ccefb640771c1848",
+      "hash_scope": "Notebook text loaded during the recorded run",
+      "distributed": false
+    },
+    "distributed_source": {
+      "path": "simulation/frame_receiver/reference_receiver.py",
+      "sha256": "3052eec561d5dacc03a28635131460bd42bcb143051c89893cf9e6dbab2a1366"
+    }
   },
   "deviations": [
     "final MoE = Exp 6a unchanged; its full-frame ALE outputs are shared with the other arms (computed once per frame)",

@@ -1,4 +1,10 @@
 {
+  "receipt_kind": "post_campaign_regeneration",
+  "campaign_receipt": "evidence/campaign/matched_native_verification.json",
+  "campaign_receipt_sha256": "31cbad27eedcbf5c7e77e927dd3a081cf70d3f428333c30e26b48bfaeb23c4e9",
+  "campaign_testbench_sha256": "c65a90c428ad740a6345674e3d41fb40587dea7ba8b4a02cfcb135c1ce6fdd3c",
+  "all_capture_hashes_match_campaign": true,
+  "captures": 78,
   "vectors": 13,
   "excluded": {
     "rtl_smoke": "NLMS gain exceeds the 48-bit hardware register on tone-to-exact-silence edges (MOE_ASSERT); not a receiver input"

@@ -202,17 +202,24 @@
     "recommended_runtime": "GPU (T4 is enough); ~25-35 min (router features on 100k-sample frames dominate)"
   },
   "reference": {
-    "notebook": "simulation/frame_receiver/reference_receiver.py",
-    "sha256_16": "6e16be5a4ccf3402",
     "imports_skipped": [
       "from reedsolo import RSCodec, ReedSolomonError  (ModuleNotFoundError)",
       "from reedsolo import RSCodec, ReedSolomonError  (ModuleNotFoundError)"
-    ]
+    ],
+    "recorded_notebook": {
+      "sha256_16": "6e16be5a4ccf3402",
+      "hash_scope": "Notebook text loaded during the recorded run",
+      "distributed": false
+    },
+    "distributed_source": {
+      "path": "simulation/frame_receiver/reference_receiver.py",
+      "sha256": "3052eec561d5dacc03a28635131460bd42bcb143051c89893cf9e6dbab2a1366"
+    }
   },
   "deviations": [
     "frame = 10,000 symbols (100,000 samples) for router AND experts; router trained on full frames (Exp 1/2 used 10k-sample frames)",
     "structured experts: LSTM 0-20 = Exp 2 'fixed020' recipe; ALE-128 NLMS (delay 20, mu 0.02 tones / 0.05 sweeps); JSR gate on an energy-based estimate; quality gate on symbol ambiguity",
-    "monolithic LSTM: same recipe trained on all four jammer types (fixed, JSR 0-20) \u2014 R3-3 single-model baseline",
+    "monolithic LSTM: same recipe trained on all four jammer types (fixed, JSR 0-20) — R3-3 single-model baseline",
     "MMSE expert not evaluated separately: it does not change hard decisions (BER == no-correction); broadband -> pass-through for BER",
     "pulse expert = reference PulseBlankerExpert calibrated as in Phase 3 (30 clean frames, seeds 600+); BER on surviving symbols",
     "protocol: Table II seeds, 100 trials (paper 20); clean frames audited (100/condition)",
