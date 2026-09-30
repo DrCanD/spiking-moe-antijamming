@@ -27,6 +27,10 @@ The energy measurement is a paired SOM-input-power contrast for selected blocks.
 | [`results/experiments/`](results/experiments/) and [`results/streaming/`](results/streaming/) | Recorded experiment summaries and frozen development/validation results. |
 | [`figures/`](figures/) | MATLAB plot source and data, plus editable architecture slides. |
 
+## Colab single cell
+
+Copy [`colab/streaming_single_cell.py`](colab/streaming_single_cell.py) into one Colab cell. It checks out the frozen experiment commit, restores the evidence, installs the pinned CPU dependencies in an isolated environment, and runs verification, development, or full development/validation according to `MODE`. Set `OUTPUT_ROOT` to a persistent output directory before a long run.
+
 ## Reproduce the recorded comparisons
 
 From the repository root, with Python 3.10+:
